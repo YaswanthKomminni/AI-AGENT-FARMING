@@ -1,0 +1,118 @@
+GOVERNMENT SCHEMES AND SUBSIDIES FOR FARMERS — INDIA
+Source: Ministry of Agriculture & Farmers Welfare, Government of India
+
+=== CENTRAL GOVERNMENT SCHEMES ===
+
+1. PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)
+   Benefit: ₹6,000/year in 3 installments of ₹2,000 each
+   Eligibility:
+   - Small and marginal farmers with up to 2 hectares cultivable land
+   - Indian citizen with valid Aadhaar
+   - Not a government employee, income taxpayer, or pensioner
+   Exclusions: Institutional land holders, professionals, retired government officials
+   How to apply: pmkisan.gov.in; online or through CSC
+   Required documents: Aadhaar, land records (Khasra/Khatoni), bank account
+   Status check: pmkisan.gov.in/Beneficiarystatus.aspx
+
+2. PMFBY (Pradhan Mantri Fasal Bima Yojana) — CROP INSURANCE
+   Purpose: Protect farmers from financial losses due to natural disasters, pests, diseases
+   Premium paid by farmer:
+   - Kharif crops: 2% of sum insured
+   - Rabi crops: 1.5% of sum insured
+   - Horticulture/Annual commercial crops: 5% of sum insured
+   Government pays the balance premium
+   Coverage:
+   - Pre-sowing to post-harvest losses
+   - Cyclone, flood, drought, hailstorm, landslide
+   - Localized calamities (hailstorm, landslide)
+   - Post-harvest (14 days) losses due to cyclone/unseasonal rain
+   How to apply:
+   - Through bank (for loanee farmers — mandatory)
+   - Non-loanee: Any bank, CSC, or pmfby.gov.in
+   Deadline: Within 2 weeks of crop sowing
+   Claim: Notify within 72 hours of damage via crop insurance app or 14447 helpline
+
+3. KCC (Kisan Credit Card)
+   Purpose: Short-term credit for crop production and maintenance
+   Interest rate: 4% (with timely repayment; 7% otherwise)
+   Credit limit: Up to ₹3 lakh without collateral
+   For: Crop loans, post-harvest expenses, maintenance of farm assets
+   Eligibility: All farmers including sharecroppers and tenant farmers
+   Apply at: Any nationalized bank, cooperative bank, regional rural bank (RRB)
+   Documents: Aadhaar, land records, passport photo, bank account
+
+4. PMKSY (Pradhan Mantri Krishi Sinchayee Yojana)
+   Components:
+   a) Per Drop More Crop: Drip/sprinkler irrigation
+      Subsidy: 40–90% on equipment (higher for SC/ST/small farmers)
+   b) Watershed Development
+   c) Accelerated Irrigation Benefits Programme (AIBP)
+   Apply at: District Agriculture/Horticulture Office
+   Online: pmksy.gov.in
+
+5. PKVY (Paramparagat Krishi Vikas Yojana)
+   Purpose: Promote organic farming
+   Benefit: ₹50,000/ha for 3 years (50,000 = ₹31,000 for inputs + ₹8,800 value addition + ₹3,200 cluster formation)
+   How it works: Farmers form clusters of 20–50 hectares; group organic farming
+   Apply at: KVK (Krishi Vigyan Kendra) or Block Agriculture Office
+
+6. SMAM (Sub-Mission on Agricultural Mechanization)
+   Subsidy on:
+   - Tractors: 25–50% (SC/ST get 50%)
+   - Power tillers: 40–50%
+   - Combine harvesters: 25–40%
+   - Sprayers, seeders, planters: 40–50%
+   Apply: State Agriculture Department portal or district office
+
+7. Soil Health Card (SHC) Scheme
+   Benefit: Free soil testing every 2 years; personalized fertilizer recommendations
+   Coverage: All 14 crore farm holdings
+   Apply: Nearest Soil Testing Lab or Agriculture Department
+   Online: soilhealth.dac.gov.in
+
+8. e-NAM (National Agriculture Market)
+   Purpose: Pan-India electronic trading platform for agricultural produce
+   Benefits: Transparent price discovery; higher prices for farmers; reduced middlemen
+   Registered mandis: 1,260+ APMCs across 18 states
+   Apply: enam.gov.in or nearest APMC mandi
+
+=== STATE-SPECIFIC SCHEMES ===
+
+Maharashtra
+- Mahatma Phule Shetkari Karjamukti Yojana: Farm loan waiver
+- Nanaji Deshmukh Krishi Sanjivany Project
+- Raytu Bandhu scheme (Telangana): ₹5,000/acre/season
+
+Telangana / Andhra Pradesh
+- Rythu Bandhu: ₹5,000/acre/crop season investment support
+- YSR Free Crop Insurance (AP)
+
+Punjab / Haryana
+- Crop diversification scheme (incentive to shift from paddy)
+- Kisan Karj Mafi Yojana
+
+Karnataka
+- Krishi Bhagya scheme: Irrigation support
+- Raita Shakthi Scheme
+
+Tamil Nadu
+- Chief Minister's Comprehensive Crop Insurance
+- Farm Mechanization Scheme (50% subsidy)
+
+=== CREDIT AND LOANS ===
+
+Nabard (National Bank for Agriculture and Rural Development)
+- KCC loans through cooperatives and RRBs
+- Rural Infrastructure Development Fund (RIDF)
+- Micro-credit for SHGs
+
+NABARD Farmer Producer Organization (FPO) scheme
+- Equity grant up to ₹15 lakh per FPO
+- Credit guarantee fund
+
+=== HELPLINES ===
+PM-KISAN helpline: 155261 / 011-24300606
+Crop Insurance: 14447 (toll-free)
+Agriculture Call Center: 1800-180-1551 (Kisan Call Centre — free)
+e-NAM: 1800-270-0224
+Soil Health Card: 1800-180-1551

@@ -1,0 +1,138 @@
+CROP SELECTION AND CULTIVATION GUIDE — INDIA
+Source: ICAR (Indian Council of Agricultural Research) / State Agriculture Universities
+
+=== KHARIF CROPS (June–October) ===
+
+RICE (Paddy)
+- Best soil: Alluvial, clay, waterlogged
+- Water requirement: 1200–2000 mm/season
+- Temperature: 20–35°C
+- Key varieties: Swarna, MTU-1010, Pusa Basmati 1121, HMT Sona
+- Seed rate: 20–25 kg/ha (transplanted); 60–80 kg/ha (direct seeded)
+- Spacing: 20x15 cm
+- Duration: 105–150 days depending on variety
+- Key states: WB, UP, Punjab, Andhra Pradesh, Telangana, Odisha
+- Yield potential: 4–8 ton/ha
+
+MAIZE
+- Best soil: Sandy loam to loam, well-drained
+- Water: 500–800 mm
+- Temperature: 18–27°C
+- Key varieties: HQPM-1, Pioneer 30V92, Dekalb 9144
+- Seed rate: 20–25 kg/ha
+- Spacing: 60x25 cm
+- Duration: 80–110 days
+- Yield: 5–8 ton/ha
+
+COTTON
+- Best soil: Black cotton soil (vertisol), red loam
+- Water: 700–1200 mm
+- Temperature: 25–35°C
+- Key varieties: Bt Cotton hybrids (Bollgard II), Suraj, LRA 5166
+- Seed rate: 1–1.5 kg/ha (Bt hybrids)
+- Spacing: 90x60 cm
+- Duration: 170–210 days
+- Yield: 1.5–3.5 ton/ha (seed cotton)
+
+SOYBEAN
+- Best soil: Black, alluvial
+- Water: 450–700 mm
+- Temperature: 26–30°C
+- Key varieties: JS 93-05, MACS 450, Phule Kalyani
+- Seed rate: 65–70 kg/ha
+- Spacing: 45x5 cm
+- Duration: 90–110 days
+- Yield: 1.5–3 ton/ha
+
+GROUNDNUT
+- Best soil: Sandy loam, red laterite
+- Water: 500–700 mm
+- Temperature: 25–30°C
+- Key varieties: TG-37A, Kadiri-5, Girnar-2
+- Seed rate: 80–100 kg/ha
+- Duration: 90–125 days
+- Yield: 2–4 ton/ha
+
+BAJRA (Pearl Millet)
+- Best soil: Sandy loam, red soil — drought tolerant
+- Water: 300–400 mm
+- Temperature: 27–35°C
+- Key varieties: HHB 67, GHB 538, Rajshree
+- Seed rate: 4–5 kg/ha
+- Duration: 65–90 days
+- Yield: 2–3.5 ton/ha
+
+ARHAR (Pigeon Pea)
+- Best soil: Loam, clay loam
+- Water: 600–900 mm
+- Temperature: 18–30°C
+- Key varieties: ICPL 87119, Asha, Rajiv Lochan
+- Duration: 150–200 days
+- Yield: 1.5–2.5 ton/ha
+
+=== RABI CROPS (November–March) ===
+
+WHEAT
+- Best soil: Loam, clay loam, alluvial
+- Water: 400–500 mm (4–6 irrigations)
+- Temperature: 10–25°C
+- Key varieties: HD-2967, HD-3086, GW-496, PBW-550
+- Seed rate: 100–125 kg/ha
+- Spacing: Row spacing 22–25 cm
+- Duration: 120–150 days
+- Yield: 4–6 ton/ha
+
+MUSTARD / RAPESEED
+- Best soil: Loam to sandy loam
+- Water: 2–3 irrigations
+- Temperature: 10–25°C
+- Key varieties: Pusa Bold, Kranti, Varuna
+- Seed rate: 5–6 kg/ha
+- Duration: 90–130 days
+- Yield: 1.5–2.5 ton/ha
+
+CHICKPEA (Gram)
+- Best soil: Sandy loam to loam
+- Water: Mostly rainfed; 1 irrigation at flowering
+- Temperature: 10–25°C
+- Key varieties: GNG-1581, JG-11, Pusa 362
+- Seed rate: 70–80 kg/ha
+- Duration: 95–120 days
+- Yield: 1.5–2.5 ton/ha
+
+BARLEY
+- Best soil: Loam, tolerates alkaline soil
+- Water: 2–3 irrigations
+- Temperature: 10–20°C
+- Key varieties: DWRB-91, K-551, Vijaya
+- Duration: 100–120 days
+- Yield: 2.5–4 ton/ha
+
+=== ZAID / SUMMER CROPS ===
+
+WATERMELON
+- Water: 400–600 mm
+- Temperature: 25–35°C
+- Duration: 60–80 days
+- Yield: 20–40 ton/ha
+
+CUCUMBER
+- Water: 300–500 mm
+- Temperature: 20–30°C
+- Duration: 50–60 days
+- Yield: 15–25 ton/ha
+
+MOONG (Green Gram — Summer)
+- Water: 250–400 mm
+- Temperature: 25–35°C
+- Duration: 60–70 days
+- Yield: 0.8–1.2 ton/ha
+
+=== SOIL-CROP MATCHING ===
+
+Alluvial soils: Rice, Wheat, Sugarcane, Maize, Vegetables
+Black cotton soils: Cotton, Soybean, Sorghum, Wheat, Chickpea
+Red soils: Groundnut, Millets, Pulses, Vegetables
+Laterite soils: Tea, Coffee, Cashew, Rice, Vegetables
+Sandy soils: Pearl Millet, Cluster Bean, Groundnut, Watermelon
+Saline/Alkaline: Barley, Rice (salt tolerant varieties), Dhaincha (green manure)

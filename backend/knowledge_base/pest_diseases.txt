@@ -1,0 +1,141 @@
+PEST AND DISEASE MANAGEMENT GUIDE — INDIA
+Source: ICAR, NCIPM (National Centre for Integrated Pest Management)
+
+=== MAJOR CROP PESTS ===
+
+RICE PESTS
+
+1. Brown Plant Hopper (BPH)
+   Cause: Nilaparvata lugens
+   Symptoms: Circular yellowing patches ("hopperburn"), plants collapse
+   Control:
+   - Drain water from fields periodically
+   - Spray Imidacloprid 17.8 SL @ 0.3 ml/L or Buprofezin 25 SC @ 1 ml/L
+   - Release egg parasitoid Anagrus spp.
+   - Avoid excessive nitrogen
+   Threshold: 5–10 hoppers/hill
+
+2. Stem Borer
+   Cause: Scirpophaga incertulas (yellow), Chilo suppressalis (striped)
+   Symptoms: Dead hearts at vegetative; white ears at reproductive stage
+   Control:
+   - Release Trichogramma japonicum 50,000/ha weekly × 5
+   - Chlorpyrifos 20 EC @ 2.5 ml/L
+   - Cartap hydrochloride granules 4G @ 8 kg/ha
+   Organic: NSKE (Neem Seed Kernel Extract) 5%
+
+3. Leaf Folder
+   Cause: Cnaphalocrocis medinalis
+   Symptoms: Leaves rolled lengthwise; feeding damage inside fold
+   Control:
+   - Spray Chlorpyrifos 20 EC @ 2.5 ml/L
+   - Quinalphos 25 EC @ 2 ml/L
+   - Spray when 5–10% leaf damage
+
+4. Blast (Leaf + Neck)
+   Cause: Magnaporthe oryzae (fungus)
+   Symptoms: Spindle-shaped gray-white spots; neck rot at grain filling
+   Control:
+   - Spray Tricyclazole 75 WP @ 0.6 g/L (3 sprays)
+   - Isoprothiolane 40 EC @ 1.5 ml/L
+   - Use resistant varieties: MTU-7029, Pusa Basmati 1509
+
+WHEAT PESTS AND DISEASES
+
+1. Yellow/Stripe Rust
+   Cause: Puccinia striiformis (fungus)
+   Symptoms: Yellow pustules in stripes on leaves
+   Control:
+   - Propiconazole 25 EC @ 0.1% (2 sprays, 10 days apart)
+   - Tebuconazole 25.9 EC @ 0.1%
+   - Use resistant varieties: PBW 343, HD 2967
+
+2. Wheat Aphid
+   Cause: Sitobion avenae
+   Symptoms: Honeydew secretion; sooty mold; stunted ears
+   Control:
+   - Dimethoate 30 EC @ 1.5 ml/L
+   - Spray when 50+ aphids/ear
+   Organic: Neem oil 5 ml/L + soap solution
+
+3. Loose Smut
+   Cause: Ustilago segetum (seed-borne)
+   Symptoms: Entire ear replaced by black powdery mass
+   Control: Seed treatment — Carboxin + Thiram 37.5 + 37.5 DP @ 2 g/kg
+
+COTTON PESTS
+
+1. American Bollworm
+   Cause: Helicoverpa armigera
+   Symptoms: Bored squares, flowers, bolls; frass visible
+   Control:
+   - Indoxacarb 14.5 SC @ 0.7 ml/L
+   - Emamectin benzoate 5 SG @ 0.4 g/L
+   - Pheromone traps @ 5/ha for monitoring
+   IPM: Ha-NPV (nuclear polyhedrosis virus) 250 LE/ha
+
+2. Mealy Bug
+   Cause: Phenacoccus solenopsis
+   Symptoms: White cottony mass on plants; severe stunting
+   Control:
+   - Imidacloprid 70 WS seed treatment
+   - Dimethoate 30 EC @ 2 ml/L
+   - Augment Cryptolaemus montrouzieri (predatory beetle)
+
+VEGETABLE PESTS
+
+1. Diamondback Moth (DBM) — Crucifer vegetables
+   Cause: Plutella xylostella
+   Symptoms: Window-pane effect; peppering on leaves
+   Control:
+   - Spinosad 45 SC @ 0.3 ml/L
+   - Flubendiamide 39.35 SC @ 0.2 ml/L
+   Resistance management: Rotate insecticides with different modes of action
+
+2. Tomato Yellow Leaf Curl Virus (TYLCV)
+   Cause: Begomovirus (whitefly-transmitted)
+   Symptoms: Yellow curling leaves; stunting; no fruits set
+   Control:
+   - Control vector with Imidacloprid 17.8 SL @ 0.5 ml/L
+   - Use virus-free certified seedlings
+   - Reflective mulch to repel whiteflies
+   - No curative chemical — prevention only
+
+=== FUNGAL DISEASES ===
+
+Powdery Mildew (wide host range)
+- Cause: Erysiphe spp.
+- Symptoms: White powdery coating on leaves and stems
+- Control: Sulfur 80 WP @ 3 g/L; Hexaconazole 5 SC @ 1 ml/L
+
+Early Blight of Tomato/Potato
+- Cause: Alternaria solani
+- Symptoms: Dark brown concentric ring spots on older leaves
+- Control: Mancozeb 75 WP @ 2 g/L; Chlorothalonil 75 WP @ 2 g/L
+
+Late Blight (Potato, Tomato)
+- Cause: Phytophthora infestans
+- Symptoms: Water-soaked patches; white mold on underside; rapid spread
+- Control: Cymoxanil + Mancozeb @ 2 g/L; Metalaxyl + Mancozeb @ 2.5 g/L
+- Emergency: Spray immediately at first sign; destroy severely affected plants
+
+Fusarium Wilt (Tomato, Cotton, Banana)
+- Cause: Fusarium oxysporum (soil-borne)
+- Control: Soil drench with Carbendazim 0.1%; Trichoderma viride 5 g/kg soil
+
+=== INTEGRATED PEST MANAGEMENT (IPM) PRINCIPLES ===
+
+1. Prevention: Use certified seeds, resistant varieties, crop rotation
+2. Monitoring: Regular field scouting twice/week; pheromone traps
+3. Biological control: Conserve natural enemies; use bio-agents
+4. Cultural: Deep summer plowing; trap crops; proper spacing
+5. Chemical: Use as last resort at threshold levels; prefer selective insecticides
+6. Organic: NSKE 5%, neem oil, Bt, NPV, Beauveria bassiana
+
+SAFETY GUIDELINES FOR PESTICIDE USE:
+- Wear PPE: gloves, mask, goggles, apron
+- Never spray in wind > 15 km/h
+- Observe Pre-Harvest Interval (PHI)
+- Do not mix more than 2 products
+- Store pesticides in original containers away from food and children
+- Dispose empty containers safely

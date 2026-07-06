@@ -1,0 +1,144 @@
+IRRIGATION MANAGEMENT GUIDE — INDIA
+Source: ICAR, Central Water Commission, INCID (Indian National Committee on Irrigation and Drainage)
+
+=== IMPORTANCE OF IRRIGATION ===
+
+India has 140 million hectares of net sown area, but only 70 million ha is under assured irrigation.
+Proper irrigation management can:
+- Increase crop yields by 40–60%
+- Save 20–40% water through efficient methods
+- Reduce water-related crop losses
+
+=== IRRIGATION METHODS ===
+
+1. FLOOD / SURFACE IRRIGATION
+- Traditional method; suitable for rice, sugarcane
+- Water Use Efficiency (WUE): 35–40%
+- Cost: Low
+- Suitable soils: Clay, clay loam (low permeability)
+
+2. DRIP IRRIGATION
+- Water delivered directly to root zone
+- WUE: 85–90%
+- Saves 40–50% water vs flood irrigation
+- Yield increase: 20–40%
+- Best for: Cotton, vegetables, fruits, sugarcane, banana
+- Subsidy: 40–90% under PMKSY
+
+3. SPRINKLER IRRIGATION
+- Water sprayed as artificial rain
+- WUE: 70–75%
+- Saves 30–40% water
+- Best for: Wheat, groundnut, soybean, vegetables
+- Not suitable for: Rice, jute (needs flooding)
+- Subsidy available under PMKSY
+
+4. ALTERNATE WETTING AND DRYING (AWD) — Rice
+- Let water level drop to 15 cm below surface, then re-flood
+- Saves 15–30% water
+- No yield loss if done correctly
+- Reduces methane emissions
+
+=== CROP-WISE IRRIGATION SCHEDULES ===
+
+RICE
+Total water: 1200–2000 mm
+- Puddling: Saturate soil 5–7 days before transplanting
+- Vegetative stage: 5 cm standing water
+- AWD method: Let drop to -15 cm, then irrigate
+- Flowering (7 days): Ensure continuous shallow flooding
+- Grain filling: Maintain 2–3 cm water
+- Stop irrigation 10–12 days before harvest
+Critical stages: Transplanting, tillering, panicle initiation, flowering
+
+WHEAT
+Total water: 400–500 mm (4–6 irrigations)
+1st irrigation: Crown Root Initiation (20–25 DAS) — MOST CRITICAL
+2nd irrigation: Tillering (40–45 DAS)
+3rd irrigation: Jointing (60–65 DAS)
+4th irrigation: Flowering (80–85 DAS) — critical
+5th irrigation: Grain filling (100–105 DAS)
+6th irrigation: Dough stage (115–120 DAS)
+Note: 1 missed irrigation at CRI stage can reduce yield by 20%
+
+COTTON
+Total water: 700–1200 mm
+- Pre-sowing: Thorough soaking
+- Vegetative (4 weeks): Every 10–12 days
+- Boll development: Every 8–10 days (critical)
+- Boll opening: Reduce frequency
+- Stop 3 weeks before harvest
+Drip recommended: 4–6 L/plant/day
+
+SUGARCANE
+Total water: 1500–2500 mm
+- Germination: 4–5 irrigations (every 7 days)
+- Grand growth: Every 10–12 days
+- Maturity: Reduce; stop 45 days before harvest
+Furrow/drip preferred
+
+MAIZE
+Total water: 500–800 mm
+- Germination: Keep moist; avoid waterlogging
+- Knee-high stage: Every 7–8 days
+- Tasseling/silking: Every 5 days (MOST CRITICAL — water stress = 40% yield loss)
+- Grain filling: Every 8–10 days
+- Dough stage: Reduce frequency
+
+TOMATO
+Total water: 400–600 mm
+- Seedling establishment: Daily light irrigation
+- Vegetative: Every 4–5 days
+- Flowering: Every 3 days (critical)
+- Fruit set/development: Every 4 days
+- Avoid water stress or excess during flowering (causes blossom drop)
+- Drip + fertigation strongly recommended
+
+GROUNDNUT
+Total water: 500–700 mm
+1st irrigation: 7–10 DAS (germination)
+2nd: Branching stage (25–30 DAS)
+3rd: Flowering (45–50 DAS) — critical
+4th: Pegging/pod development (70–75 DAS) — critical
+5th: Pod filling (90–95 DAS)
+Avoid waterlogging during pegging stage
+
+=== WATER STRESS IDENTIFICATION ===
+Visual signs that crop needs water:
+- Leaf rolling or wilting during day (Turgor pressure loss)
+- Leaf color turns blue-green or dull
+- Afternoon wilting that doesn't recover by evening
+- Dry soil at 10–15 cm depth (finger/soil probe test)
+
+=== WATER CONSERVATION TECHNIQUES ===
+
+1. Mulching
+- Organic: Straw, paddy husk, sugarcane trash (3–5 cm layer)
+- Plastic: Black or silver mulch film
+- Benefit: Reduces evaporation by 30–40%; suppresses weeds
+
+2. Laser Land Leveling
+- Reduces water use by 20–25%
+- Ensures uniform distribution
+- Cost: ₹2,000–3,000/ha (subsidized)
+
+3. Rainwater Harvesting
+- Farm ponds: Store runoff water
+- Cost: ₹100–200/m³ (subsidized under MGNREGS)
+
+4. Soil Moisture Conservation
+- Deep plowing breaks hard pan
+- Contour bunding in hilly areas
+- Broad bed and furrow (BBF) system
+
+5. Tensiometer Use
+- Measure soil moisture at root zone
+- Irrigate at 0.4–0.6 bar (varies by crop)
+- Avoids both under and over-irrigation
+
+=== IRRIGATION WATER QUALITY ===
+- EC < 1.2 dS/m: Suitable for all crops
+- EC 1.2–3.0 dS/m: Moderate; use salt-tolerant crops
+- EC > 3.0 dS/m: Problematic; needs treatment or blending
+- pH 6.5–8.5: Acceptable range
+- Check for heavy metals if using industrial effluent

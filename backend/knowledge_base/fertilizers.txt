@@ -1,0 +1,129 @@
+FERTILIZER AND SOIL NUTRITION GUIDE — INDIA
+Source: ICAR, Soil Science Society of India, State Agriculture Universities
+
+=== MACRO NUTRIENTS ===
+
+NITROGEN (N)
+Function: Vegetative growth, leaf greenness (chlorophyll), protein synthesis
+Deficiency symptoms: General yellowing (chlorosis) starting from lower/older leaves; stunted growth
+Common sources:
+- Urea: 46% N (most popular, cheapest)
+- DAP: 18% N + 46% P2O5
+- CAN (Calcium Ammonium Nitrate): 26% N
+- Ammonium Sulfate: 21% N
+Organic: FYM (10–15 ton/ha), compost, poultry manure (2.5% N), vermicompost
+Application tips:
+- Split application reduces losses (base + 1–2 top dressings)
+- Apply urea in evening; irrigate after application
+- Avoid broadcast in waterlogged fields (denitrification)
+
+PHOSPHORUS (P)
+Function: Root development, energy transfer, flowering, seed formation
+Deficiency symptoms: Purple/reddish tinge on leaf undersides; poor rooting; delayed maturity
+Sources:
+- DAP (Di-Ammonium Phosphate): 18-46-0
+- SSP (Single Super Phosphate): 16% P2O5 + 11% S (provides sulfur too)
+- TSP (Triple Super Phosphate): 46% P2O5
+Organic: Rock phosphate, bone meal, PSB biofertilizer
+Application tips:
+- Apply at basal (at sowing/transplanting)
+- PSB (Phosphate Solubilizing Bacteria) biofertilizer helps in fixing soil phosphorus
+
+POTASSIUM (K)
+Function: Water regulation, enzyme activation, fruit quality, disease resistance
+Deficiency symptoms: Brown scorching of leaf margins/tips; weak stems; poor quality produce
+Sources:
+- MOP (Muriate of Potash): 60% K2O
+- SOP (Sulfate of Potash): 50% K2O (preferred for fruits/vegetables)
+Organic: Wood ash, compost, banana stem
+
+SECONDARY NUTRIENTS
+
+Sulfur (S)
+- Deficiency: Uniform yellowing of young leaves
+- Source: Gypsum (18% S), SSP, Ammonium Sulfate, Elemental Sulfur
+- Dose: 20–40 kg S/ha (basal)
+- Especially important for oilseeds (mustard, groundnut, soybean)
+
+Calcium (Ca)
+- Deficiency: Blossom end rot in tomato/capsicum; tip burn in cabbage
+- Source: Lime, Gypsum, Calcium Nitrate
+- Foliar: Calcium Nitrate 1% spray at fruiting
+
+Magnesium (Mg)
+- Deficiency: Interveinal chlorosis in older leaves
+- Source: Magnesium Sulfate (Epsom Salt)
+- Foliar: MgSO4 0.5% spray × 2–3 times
+
+=== MICRO NUTRIENTS ===
+
+ZINC (Zn) — Most common deficiency in India
+- Deficiency: Brown rust-colored spots (Khaira in rice); stunted growth; small leaves
+- Source: Zinc Sulfate (21% or 33%), Zinc chelate
+- Soil: 25–50 kg ZnSO4/ha
+- Foliar: 0.5% ZnSO4 spray × 3 times
+
+IRON (Fe)
+- Deficiency: Interveinal chlorosis starting from young leaves (yellow-green striping)
+- Common in calcareous/alkaline soils
+- Source: Ferrous Sulfate 19%; Fe-EDTA chelate
+- Foliar: 0.5% FeSO4 spray × 3 times
+
+BORON (B)
+- Deficiency: "Heart rot" in beet/turnip; hollow stem in mustard; poor fruit set
+- Source: Borax 10.5% B; Boric acid
+- Dose: 1–1.5 kg B/ha soil; 0.1–0.2% foliar spray
+
+MANGANESE (Mn)
+- Deficiency: Interveinal chlorosis in young leaves; grayish specks
+- Source: Manganese Sulfate
+- Foliar: 0.3% spray
+
+=== CROP-WISE NPK RECOMMENDATIONS (kg/ha) ===
+
+Rice:         N:120, P:60, K:60
+Wheat:        N:120, P:60, K:40
+Maize:        N:150, P:75, K:75
+Cotton:       N:160, P:80, K:80
+Soybean:      N:30, P:60, K:60 (N from Rhizobium)
+Groundnut:    N:25, P:50, K:50 + Gypsum 400 kg/ha
+Sugarcane:    N:250, P:125, K:125
+Tomato:       N:180, P:100, K:100
+Potato:       N:180, P:80, K:100
+Onion:        N:100, P:60, K:60
+Mustard:      N:80, P:40, K:20
+
+=== ORGANIC FARMING ===
+
+Farmyard Manure (FYM)
+- NPK: 0.5% N, 0.25% P, 0.5% K (approx)
+- Application: 10–15 ton/ha; incorporate 3–4 weeks before sowing
+- Benefits: Improves soil structure, water holding, microbial activity
+
+Vermicompost
+- NPK: 2–3% N, 1.5–2.5% P, 1.5–2% K
+- Application: 5–10 ton/ha
+- Rich in growth hormones and micronutrients
+
+Green Manure
+- Dhaincha (Sesbania): Incorporate at 45 days; adds 90–100 kg N/ha
+- Sunhemp (Crotalaria): Adds 60–90 kg N/ha
+- Berseem: Adds 30–50 kg N/ha
+
+Biofertilizers
+- Rhizobium: N-fixation for legumes; seed treatment 200 g/ha
+- Azatobacter: Non-symbiotic N-fixation; 5 kg/ha; saves 20–25 kg N/ha
+- PSB: Phosphate solubilization; 5 kg/ha; saves 20–25 kg P/ha
+- VAM (Vesicular Arbuscular Mycorrhizae): Improves P, Zn uptake
+
+Neem-based Products
+- Neem Cake: 200–250 kg/ha; nitrification inhibitor; also pest deterrent
+- Neem-coated Urea (NCU): Reduces N losses by 10–15%
+
+=== SOIL HEALTH CARD SCHEME ===
+All farmers should get their soil tested every 3 years.
+Apply online at soilhealth.dac.gov.in
+Benefits:
+- Crop-wise fertilizer recommendations
+- Soil pH, EC, and micronutrient status
+- Saves 15–25% fertilizer cost
