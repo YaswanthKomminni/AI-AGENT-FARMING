@@ -41,7 +41,7 @@ def get_granite_llm():
         logger.info(f"IBM Granite (ChatWatsonx) initialised: {settings.ibm_granite_model_id}")
         return llm
     except Exception as e:
-        logger.error(f"Failed to initialise IBM Granite LLM: {e}")
+        logger.error(f"Failed to initialise IBM Granite LLM: {e}", exc_info=True)
         return _MockGraniteLLM()
 
 
