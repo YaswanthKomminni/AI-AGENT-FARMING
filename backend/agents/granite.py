@@ -28,7 +28,7 @@ def get_granite_llm():
         llm = ChatWatsonx(
             model_id=settings.ibm_granite_model_id,
             url=settings.ibm_watsonx_url,
-            api_key=settings.ibm_watsonx_api_key,
+            apikey=settings.ibm_watsonx_api_key,
             project_id=settings.ibm_watsonx_project_id,
             params={
                 GenParams.MAX_NEW_TOKENS: 400,   # reduced: 800→400 for 2x faster responses
