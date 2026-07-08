@@ -8,7 +8,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=("/etc/secrets/.env", ".env", ".env.example"),  # support Render secrets location
+        env_file=(".env.example", ".env", "/etc/secrets/.env"),  # support Render secrets location
         env_file_encoding="utf-8",
         case_sensitive=False,
         extra="ignore",
@@ -39,6 +39,18 @@ class Settings(BaseSettings):
 
     # Embeddings
     embedding_model: str = "all-MiniLM-L6-v2"
+
+    def __init__(self, **values):
+        super().__init__(**values)
+        # Auto-sanitize quotes and whitespaces from IBM Watsonx credentials
+        if self.ibm_watsonx_api_key:
+            self.ibm_watsonx_api_key = self.ibm_watsonx_api_key.strip(" '\"")
+        if self.ibm_watsonx_project_id:
+            self.ibm_watsonx_project_id = self.ibm_watsonx_project_id.strip(" '\"")
+        if self.ibm_watsonx_url:
+            self.ibm_watsonx_url = self.ibm_watsonx_url.strip(" '\"")
+        if self.ibm_granite_model_id:
+            self.ibm_granite_model_id = self.ibm_granite_model_id.strip(" '\"")
 
     @property
     def cors_origins_list(self) -> list[str]:
