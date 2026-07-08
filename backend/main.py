@@ -22,14 +22,7 @@ async def lifespan(app: FastAPI):
     Startup: eagerly warm up ALL slow components so the first user
     request is fast instead of hitting a 16-second cold-start.
     """
-    import os
     logger.info("FarmWise AI starting up — warming up components...")
-    logger.info(f"DEBUG CONFIG: /etc/secrets/.env exists: {os.path.exists('/etc/secrets/.env')}")
-    logger.info(f"DEBUG CONFIG: .env exists: {os.path.exists('.env')}")
-    logger.info(f"DEBUG CONFIG: ibm_watsonx_api_key len: {len(settings.ibm_watsonx_api_key)}")
-    logger.info(f"DEBUG CONFIG: ibm_watsonx_project_id: {settings.ibm_watsonx_project_id}")
-    logger.info(f"DEBUG CONFIG: ibm_watsonx_url: {settings.ibm_watsonx_url}")
-    logger.info(f"DEBUG CONFIG: cors_origins: {settings.cors_origins}")
 
     # 1. Pre-load embedding model (16s cold-start — do it now, not on first query)
     try:

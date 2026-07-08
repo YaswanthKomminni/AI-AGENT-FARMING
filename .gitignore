@@ -41,3 +41,8 @@ backend/test_*.py
 backend/diagnose.py
 test_*.py
 test_intent.py
+
+# Presentation Generator Temp Files
+backend/extracted_images/
+backend/scripts/extract_pdf.py
+backend/scripts/generate_pptx.py
