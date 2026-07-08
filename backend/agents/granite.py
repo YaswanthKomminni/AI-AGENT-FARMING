@@ -22,10 +22,10 @@ def get_granite_llm():
         return _MockGraniteLLM()
 
     try:
-        from langchain_ibm import ChatWatsonx
+        from langchain_ibm import WatsonxLLM
         from ibm_watsonx_ai.metanames import GenTextParamsMetaNames as GenParams
 
-        llm = ChatWatsonx(
+        llm = WatsonxLLM(
             model_id=settings.ibm_granite_model_id,
             url=settings.ibm_watsonx_url,
             apikey=settings.ibm_watsonx_api_key,
@@ -38,7 +38,7 @@ def get_granite_llm():
                 GenParams.REPETITION_PENALTY: 1.1,
             },
         )
-        logger.info(f"IBM Granite (ChatWatsonx) initialised: {settings.ibm_granite_model_id}")
+        logger.info(f"IBM Granite (WatsonxLLM) initialised: {settings.ibm_granite_model_id}")
         return llm
     except Exception as e:
         logger.error(f"Failed to initialise IBM Granite LLM: {e}", exc_info=True)

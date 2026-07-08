@@ -32,10 +32,8 @@ SYSTEM_PROMPT = (
 )
 
 
-def build_rag_messages(query: str, context_docs: list[dict], language: str = "English") -> list:
-    """Build LangChain chat messages for ChatWatsonx (Granite 4 chat API)."""
-    from langchain_core.messages import SystemMessage, HumanMessage
-
+def build_rag_prompt(query: str, context_docs: list[dict], language: str = "English") -> str:
+    """Build formatted string prompt for WatsonxLLM using Granite template."""
     context_parts = []
     for i, doc in enumerate(context_docs, 1):
         source = doc.get("metadata", {}).get("source", "Knowledge Base")
@@ -48,10 +46,16 @@ def build_rag_messages(query: str, context_docs: list[dict], language: str = "En
         f"Relevant farming knowledge:\n{context_str}\n\n"
         f"Farmer's question: {query}{lang_instruction}"
     )
-    return [SystemMessage(content=SYSTEM_PROMPT), HumanMessage(content=user_content)]
+    
+    prompt = (
+        f"<|system|>\n{SYSTEM_PROMPT}<|end|>\n"
+        f"<|user|>\n{user_content}<|end|>\n"
+        f"<|assistant|>\n"
+    )
+    return prompt
 
 
-def _invoke_with_retry(llm, messages: list, max_retries: int = 3) -> str:
+def _invoke_with_retry(llm, prompt: str, max_retries: int = 3) -> str:
     """
     Invoke the LLM with exponential back-off retry on rate-limit (429) errors.
     IBM Cloud Lite plan has a 10 concurrent-request limit.
@@ -59,7 +63,7 @@ def _invoke_with_retry(llm, messages: list, max_retries: int = 3) -> str:
     delay = 3  # seconds
     for attempt in range(max_retries):
         try:
-            response = llm.invoke(messages)
+            response = llm.invoke(prompt)
             if hasattr(response, "content"):
                 return response.content
             return str(response)
@@ -109,15 +113,15 @@ def run_rag_pipeline(
         logger.warning(f"Retrieval failed: {e}. Continuing without context.")
         docs = []
 
-    # Step 3: Build messages
-    messages = build_rag_messages(query, docs, language)
+    # Step 3: Build formatted prompt string
+    prompt = build_rag_prompt(query, docs, language)
 
     # Step 4: Generate with IBM Granite (retry on 429)
     try:
         llm = get_granite_llm()
-        response_text = _invoke_with_retry(llm, messages)
+        response_text = _invoke_with_retry(llm, prompt)
     except Exception as e:
-        logger.error(f"LLM generation failed after retries: {e}")
+        logger.error(f"LLM generation failed after retries: {e}", exc_info=True)
         # Fall back to mock response so the app stays usable
         from agents.granite import _MockGraniteLLM
         response_text = _MockGraniteLLM().invoke(query)
