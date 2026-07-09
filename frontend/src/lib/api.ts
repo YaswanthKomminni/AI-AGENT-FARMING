@@ -11,6 +11,12 @@ export interface ChatRequest {
   lat?: number
   lon?: number
   translate_input?: boolean
+  soil_ph?: number
+  npk_nitrogen?: number
+  npk_phosphorus?: number
+  npk_potassium?: number
+  farm_size?: number
+  irrigation?: string
 }
 
 export interface ChatResponse {

@@ -25,6 +25,12 @@ class ChatRequest(BaseModel):
     lat: Optional[float] = None
     lon: Optional[float] = None
     translate_input: bool = False
+    soil_ph: Optional[float] = None
+    npk_nitrogen: Optional[int] = None
+    npk_phosphorus: Optional[int] = None
+    npk_potassium: Optional[int] = None
+    farm_size: Optional[float] = None
+    irrigation: Optional[str] = None
 
 
 class ChatResponse(BaseModel):
@@ -60,6 +66,12 @@ async def chat(request: ChatRequest):
             season=request.season,
             lat=request.lat,
             lon=request.lon,
+            soil_ph=request.soil_ph,
+            npk_nitrogen=request.npk_nitrogen,
+            npk_phosphorus=request.npk_phosphorus,
+            npk_potassium=request.npk_potassium,
+            farm_size=request.farm_size,
+            irrigation=request.irrigation,
         )
 
         # Translate response back to user language if not English

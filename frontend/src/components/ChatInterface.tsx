@@ -35,6 +35,16 @@ const INTENT_COLORS: Record<string, string> = {
   general:    'bg-gray-100 text-gray-600',
 }
 
+const STATES_AND_DISTRICTS: Record<string, string[]> = {
+  'Maharashtra': ['Pune', 'Nashik', 'Nagpur', 'Aurangabad', 'Solapur', 'Satara', 'Kolhapur', 'Amravati'],
+  'Karnataka': ['Bangalore', 'Belagavi', 'Tumakuru', 'Mysuru', 'Mandya', 'Hassan', 'Dharwad'],
+  'Punjab': ['Ludhiana', 'Amritsar', 'Jalandhar', 'Patiala', 'Bathinda', 'Ferozepur', 'Sangrur'],
+  'Andhra Pradesh': ['Guntur', 'Krishna', 'East Godavari', 'West Godavari', 'Chittoor', 'Anantapur', 'Kurnool'],
+  'Uttar Pradesh': ['Lucknow', 'Kanpur', 'Varanasi', 'Agra', 'Meerut', 'Bareilly', 'Gorakhpur', 'Prayagraj'],
+  'Gujarat': ['Ahmedabad', 'Surat', 'Vadodara', 'Rajkot', 'Bhavnagar', 'Jamnagar', 'Junagadh'],
+  'Tamil Nadu': ['Chennai', 'Coimbatore', 'Madurai', 'Tiruchirappalli', 'Salem', 'Tirunelveli', 'Vellore']
+}
+
 function formatMarkdown(text: string): string {
   return text
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
@@ -68,7 +78,14 @@ export default function ChatInterface() {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
   const [language, setLanguage] = useState('English')
-  const [location, setLocation] = useState('')
+  const [selectedState, setSelectedState] = useState('')
+  const [selectedDistrict, setSelectedDistrict] = useState('')
+  const [soilPh, setSoilPh] = useState('')
+  const [npkNitrogen, setNpkNitrogen] = useState('')
+  const [npkPhosphorus, setNpkPhosphorus] = useState('')
+  const [npkPotassium, setNpkPotassium] = useState('')
+  const [farmSize, setFarmSize] = useState('')
+  const [irrigation, setIrrigation] = useState('')
   const [crop, setCrop] = useState('')
   const [season, setSeason] = useState('')
   const [soilType, setSoilType] = useState('')
@@ -101,14 +118,25 @@ export default function ChatInterface() {
     setLoading(true)
 
     try {
+      const locationVal = selectedDistrict && selectedState 
+        ? `${selectedDistrict}, ${selectedState}` 
+        : selectedState || selectedDistrict || undefined
+
       const response: ChatResponse = await sendChatMessage({
         message: msg,
         language,
-        location: location || undefined,
+        location: locationVal,
+        state: selectedState || undefined,
         crop: crop || undefined,
         season: season || undefined,
         soil_type: soilType || undefined,
         translate_input: language !== 'English',
+        soil_ph: soilPh ? parseFloat(soilPh) : undefined,
+        npk_nitrogen: npkNitrogen ? parseInt(npkNitrogen) : undefined,
+        npk_phosphorus: npkPhosphorus ? parseInt(npkPhosphorus) : undefined,
+        npk_potassium: npkPotassium ? parseInt(npkPotassium) : undefined,
+        farm_size: farmSize ? parseFloat(farmSize) : undefined,
+        irrigation: irrigation || undefined,
       })
 
       const botMsg: Message = {
@@ -309,21 +337,46 @@ export default function ChatInterface() {
         </div>
       </div>
 
-      {/* Context Panel */}
-      <div className="w-72 hidden lg:flex flex-col gap-3">
+      <div className="w-72 hidden lg:flex flex-col gap-3 overflow-y-auto max-h-full pr-1">
         <div className="card-premium rounded-2xl p-5">
           <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
             <span>📍</span> Farming Context
           </h3>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-gray-500 font-medium block mb-1">Location / District</label>
-              <input
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                placeholder="e.g., Pune, Maharashtra"
+              <label className="text-xs text-gray-500 font-medium block mb-1">State</label>
+              <select
+                value={selectedState}
+                onChange={(e) => {
+                  setSelectedState(e.target.value)
+                  setSelectedDistrict('')
+                }}
                 className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
-              />
+              >
+                <option value="">Select State</option>
+                {Object.keys(STATES_AND_DISTRICTS).map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 font-medium block mb-1">District</label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                disabled={!selectedState}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50 disabled:opacity-50"
+              >
+                <option value="">{selectedState ? 'Select District' : 'Select State first'}</option>
+                {selectedState &&
+                  STATES_AND_DISTRICTS[selectedState].map((district) => (
+                    <option key={district} value={district}>
+                      {district}
+                    </option>
+                  ))}
+              </select>
             </div>
             <div>
               <label className="text-xs text-gray-500 font-medium block mb-1">Crop</label>
@@ -360,6 +413,77 @@ export default function ChatInterface() {
                 <option value="red">Red Soil</option>
                 <option value="laterite">Laterite</option>
                 <option value="sandy">Sandy</option>
+              </select>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <label className="text-xs text-gray-500 font-medium block mb-1">Soil pH</label>
+                <input
+                  type="number"
+                  step="0.1"
+                  value={soilPh}
+                  onChange={(e) => setSoilPh(e.target.value)}
+                  placeholder="pH"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+                  min="0"
+                  max="14"
+                />
+              </div>
+              <div>
+                <label className="text-xs text-gray-500 font-medium block mb-1">Farm Size (Ac)</label>
+                <input
+                  type="number"
+                  step="0.5"
+                  value={farmSize}
+                  onChange={(e) => setFarmSize(e.target.value)}
+                  placeholder="Acres"
+                  className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+                  min="0"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 font-medium block mb-1">NPK Values (N - P - K)</label>
+              <div className="grid grid-cols-3 gap-1">
+                <input
+                  type="number"
+                  value={npkNitrogen}
+                  onChange={(e) => setNpkNitrogen(e.target.value)}
+                  placeholder="N"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-center focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+                  min="0"
+                />
+                <input
+                  type="number"
+                  value={npkPhosphorus}
+                  onChange={(e) => setNpkPhosphorus(e.target.value)}
+                  placeholder="P"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-center focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+                  min="0"
+                />
+                <input
+                  type="number"
+                  value={npkPotassium}
+                  onChange={(e) => setNpkPotassium(e.target.value)}
+                  placeholder="K"
+                  className="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-center focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+                  min="0"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="text-xs text-gray-500 font-medium block mb-1">Irrigation Method</label>
+              <select
+                value={irrigation}
+                onChange={(e) => setIrrigation(e.target.value)}
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
+              >
+                <option value="">Select irrigation</option>
+                <option value="drip">Drip Irrigation</option>
+                <option value="sprinkler">Sprinkler Irrigation</option>
+                <option value="borewell">Borewell Flood</option>
+                <option value="canal">Canal Irrigation</option>
+                <option value="rainfed">Rainfed (No Irrigation)</option>
               </select>
             </div>
           </div>

@@ -142,6 +142,12 @@ async def process_farming_query(
     season: Optional[str] = None,
     lat: Optional[float] = None,
     lon: Optional[float] = None,
+    soil_ph: Optional[float] = None,
+    npk_nitrogen: Optional[int] = None,
+    npk_phosphorus: Optional[int] = None,
+    npk_potassium: Optional[int] = None,
+    farm_size: Optional[float] = None,
+    irrigation: Optional[str] = None,
 ) -> dict:
     """
     Main entry point for the farming agent.
@@ -186,6 +192,14 @@ async def process_farming_query(
         context_parts.append(f"Crop: {crop}")
     if soil_type:
         context_parts.append(f"Soil type: {soil_type}")
+    if soil_ph is not None:
+        context_parts.append(f"Soil pH: {soil_ph}")
+    if npk_nitrogen is not None or npk_phosphorus is not None or npk_potassium is not None:
+        context_parts.append(f"NPK: N={npk_nitrogen or 0} P={npk_phosphorus or 0} K={npk_potassium or 0}")
+    if farm_size is not None:
+        context_parts.append(f"Farm size: {farm_size} acres")
+    if irrigation:
+        context_parts.append(f"Irrigation: {irrigation}")
     if season:
         context_parts.append(f"Season: {season}")
 
