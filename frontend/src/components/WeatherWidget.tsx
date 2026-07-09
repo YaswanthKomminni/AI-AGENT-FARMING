@@ -1,6 +1,10 @@
 'use client'
 import { useState, useEffect } from 'react'
 import { getWeatherByCity, type WeatherData } from '@/lib/api'
+import { 
+  Sun, CloudSun, Cloud, CloudFog, CloudRain, CloudLightning, CloudSnow, 
+  Thermometer, Droplets, Wind, Sprout, Calendar, AlertTriangle, Loader2 
+} from 'lucide-react'
 
 const CITIES = [
   'Delhi', 'Mumbai', 'Bangalore', 'Chennai', 'Kolkata',
@@ -8,16 +12,36 @@ const CITIES = [
   'Patna', 'Bhopal', 'Nagpur', 'Chandigarh', 'Indore',
 ]
 
-const WMO_EMOJI: Record<string, string> = {
-  'Clear sky': '☀️', 'Mainly clear': '🌤️', 'Partly cloudy': '⛅',
-  'Overcast': '☁️', 'Fog': '🌫️', 'Light drizzle': '🌦️',
-  'Moderate drizzle': '🌧️', 'Heavy drizzle': '🌧️',
-  'Slight rain': '🌧️', 'Moderate rain': '🌧️', 'Heavy rain': '⛈️',
-  'Thunderstorm': '⛈️', 'Slight snow': '🌨️',
+interface WeatherIconProps {
+  condition: string
+  className?: string
 }
 
-function WeatherIcon({ condition }: { condition: string }) {
-  return <span className="text-2xl">{WMO_EMOJI[condition] || '🌡️'}</span>
+function WeatherIcon({ condition, className = "w-6 h-6 text-emerald-600" }: WeatherIconProps) {
+  switch (condition) {
+    case 'Clear sky':
+      return <Sun className={`${className} text-amber-500`} />
+    case 'Mainly clear':
+    case 'Partly cloudy':
+      return <CloudSun className={`${className} text-emerald-500`} />
+    case 'Overcast':
+      return <Cloud className={`${className} text-slate-500`} />
+    case 'Fog':
+      return <CloudFog className={`${className} text-slate-400`} />
+    case 'Light drizzle':
+    case 'Moderate drizzle':
+    case 'Heavy drizzle':
+    case 'Slight rain':
+    case 'Moderate rain':
+      return <CloudRain className={`${className} text-blue-500`} />
+    case 'Heavy rain':
+    case 'Thunderstorm':
+      return <CloudLightning className={`${className} text-blue-600`} />
+    case 'Slight snow':
+      return <CloudSnow className={`${className} text-sky-400`} />
+    default:
+      return <Thermometer className={`${className} text-orange-500`} />
+  }
 }
 
 export default function WeatherWidget() {
@@ -44,7 +68,7 @@ export default function WeatherWidget() {
   }, [selectedCity])
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 animate-slide-up">
       {/* City selector */}
       <div className="card-premium rounded-2xl p-5">
         <div className="flex flex-wrap gap-2">
@@ -65,82 +89,95 @@ export default function WeatherWidget() {
       </div>
 
       {loading && (
-        <div className="card-premium rounded-2xl p-12 text-center">
-          <div className="text-3xl mb-2 animate-bounce">🌤️</div>
+        <div className="card-premium rounded-2xl p-12 text-center flex flex-col items-center justify-center">
+          <Loader2 className="w-8 h-8 text-emerald-600 animate-spin mb-2" />
           <p className="text-gray-500 text-sm font-medium">Loading weather data…</p>
         </div>
       )}
 
       {error && (
-        <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-red-600 text-sm">
-          {error}
+        <div className="bg-red-50 border border-red-200 rounded-2xl p-4 text-red-600 text-sm flex items-center gap-2">
+          <AlertTriangle className="w-4 h-4" />
+          <span>{error}</span>
         </div>
       )}
 
       {weather && !loading && (
         <>
           {/* Current conditions */}
-          <div className="bg-gradient-to-br from-green-700 to-teal-700 text-white rounded-2xl shadow-sm p-6">
+          <div className="bg-gradient-to-br from-emerald-800 to-teal-800 text-white rounded-2xl shadow-md p-6">
             <div className="flex justify-between items-start">
               <div>
-                <h2 className="text-2xl font-bold">
+                <h2 className="text-2xl font-bold tracking-tight">
                   {weather.city || selectedCity}
                 </h2>
-                <p className="text-green-200 text-sm">{weather.current.condition}</p>
+                <p className="text-emerald-200 text-sm font-medium">{weather.current.condition}</p>
                 <div className="mt-4 flex items-end gap-2">
                   <span className="text-6xl font-light">{weather.current.temperature_2m}°</span>
                   <span className="text-lg mb-2">C</span>
                 </div>
-                <p className="text-green-200 text-xs mt-1">Feels like {weather.current.apparent_temperature}°C</p>
+                <p className="text-emerald-200 text-xs mt-1">Feels like {weather.current.apparent_temperature}°C</p>
               </div>
-              <WeatherIcon condition={weather.current.condition} />
+              <WeatherIcon condition={weather.current.condition} className="w-12 h-12 text-white" />
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-green-600">
+            <div className="grid grid-cols-3 gap-4 mt-6 pt-4 border-t border-emerald-700/50">
               <div className="text-center">
-                <p className="text-green-200 text-xs">Humidity</p>
-                <p className="font-bold">{weather.current.relative_humidity_2m}%</p>
+                <p className="text-emerald-200 text-xs flex items-center justify-center gap-1">
+                  <Droplets className="w-3.5 h-3.5" /> Humidity
+                </p>
+                <p className="font-bold text-sm mt-1">{weather.current.relative_humidity_2m}%</p>
               </div>
               <div className="text-center">
-                <p className="text-green-200 text-xs">Rain</p>
-                <p className="font-bold">{weather.current.precipitation} mm</p>
+                <p className="text-emerald-200 text-xs flex items-center justify-center gap-1">
+                  <CloudRain className="w-3.5 h-3.5" /> Rain
+                </p>
+                <p className="font-bold text-sm mt-1">{weather.current.precipitation} mm</p>
               </div>
               <div className="text-center">
-                <p className="text-green-200 text-xs">Wind</p>
-                <p className="font-bold">{weather.current.wind_speed_10m} km/h</p>
+                <p className="text-emerald-200 text-xs flex items-center justify-center gap-1">
+                  <Wind className="w-3.5 h-3.5" /> Wind
+                </p>
+                <p className="font-bold text-sm mt-1">{weather.current.wind_speed_10m} km/h</p>
               </div>
             </div>
           </div>
 
           {/* Farming Advisories */}
           {weather.farming_advisory.length > 0 && (
-            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4">
-              <h3 className="font-semibold text-amber-800 text-sm mb-2">🌾 Farming Advisories</h3>
-              <ul className="space-y-2">
-                {weather.farming_advisory.map((adv, i) => (
-                  <li key={i} className="text-sm text-amber-900 flex items-start gap-2">
-                    <span className="mt-0.5 flex-shrink-0">•</span>
-                    <span>{adv}</span>
-                  </li>
-                ))}
-              </ul>
+            <div className="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-start gap-3">
+              <Sprout className="w-5 h-5 text-amber-700 flex-shrink-0 mt-0.5" />
+              <div>
+                <h3 className="font-bold text-amber-800 text-sm mb-2">Farming Advisories</h3>
+                <ul className="space-y-2">
+                  {weather.farming_advisory.map((adv, i) => (
+                    <li key={i} className="text-xs text-amber-900 flex items-start gap-1.5">
+                      <span className="flex-shrink-0 mt-0.5">•</span>
+                      <span>{adv}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           )}
 
           {/* 7-day forecast */}
           <div className="card-premium rounded-2xl p-5">
-            <h3 className="font-bold text-gray-800 text-sm mb-3">📅 7-Day Forecast</h3>
-            <div className="grid grid-cols-7 gap-2">
+            <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
+              <Calendar className="w-4 h-4 text-emerald-600" />
+              7-Day Forecast
+            </h3>
+            <div className="grid grid-cols-7 gap-2 overflow-x-auto">
               {weather.forecast_7day.map((day, i) => (
-                <div key={day.date} className="text-center">
-                  <p className="text-xs text-gray-500 mb-1">
+                <div key={day.date} className="text-center min-w-[50px] flex flex-col items-center">
+                  <p className="text-[10px] text-gray-500 mb-1 font-medium">
                     {i === 0 ? 'Today' : new Date(day.date).toLocaleDateString('en', { weekday: 'short' })}
                   </p>
-                  <WeatherIcon condition={day.condition} />
+                  <WeatherIcon condition={day.condition} className="w-5 h-5 my-1" />
                   <p className="text-xs font-semibold text-gray-800 mt-1">{day.max_temp}°</p>
-                  <p className="text-xs text-gray-400">{day.min_temp}°</p>
+                  <p className="text-[10px] text-gray-400">{day.min_temp}°</p>
                   {day.precipitation > 0 && (
-                    <p className="text-xs text-blue-500 mt-0.5">{day.precipitation}mm</p>
+                    <p className="text-[9px] text-blue-500 mt-0.5 font-medium">{day.precipitation}mm</p>
                   )}
                 </div>
               ))}

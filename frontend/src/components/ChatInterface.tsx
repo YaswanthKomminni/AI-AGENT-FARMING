@@ -3,6 +3,7 @@ import { useState, useRef, useEffect } from 'react'
 import { sendChatMessage, textToSpeech, type ChatResponse } from '@/lib/api'
 import LanguageSelector from './LanguageSelector'
 import VoiceInput from './VoiceInput'
+import { Bot, Sliders, Zap, Volume2, Copy, Check, Send, Sprout } from 'lucide-react'
 
 interface Message {
   id: string
@@ -186,7 +187,7 @@ export default function ChatInterface() {
         {/* Chat Header */}
         <div className="flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-emerald-800 to-emerald-700 text-white border-b border-emerald-900/10">
           <div className="flex items-center gap-2">
-            <span className="text-lg filter drop-shadow-sm">🤖</span>
+            <Bot className="w-5 h-5 text-emerald-300" />
             <div>
               <p className="font-bold text-sm tracking-wide">FarmWise AI Advisor</p>
               <p className="text-[10px] text-emerald-200 font-medium">IBM Granite + RAG • {language}</p>
@@ -202,17 +203,17 @@ export default function ChatInterface() {
           {messages.map((msg) => (
             <div
               key={msg.id}
-              className={`flex animate-fade-in ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
+              className={`flex animate-slide-up ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}
             >
               {msg.role === 'assistant' && (
-                <div className="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white text-sm mr-2 flex-shrink-0 mt-1">
-                  🌾
+                <div className="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-white mr-2 flex-shrink-0 mt-1 shadow-sm">
+                  <Sprout className="w-4 h-4 text-emerald-100" />
                 </div>
               )}
               <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
+                className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.01)] ${
                   msg.role === 'user'
-                    ? 'bg-green-700 text-white rounded-tr-none'
+                    ? 'bg-emerald-700 text-white rounded-tr-none'
                     : 'bg-gray-50 border border-gray-100 rounded-tl-none'
                 }`}
               >
@@ -229,7 +230,7 @@ export default function ChatInterface() {
                       className="text-xs text-green-300 hover:text-white transition-colors flex-shrink-0 mt-0.5"
                       title="Copy Question"
                     >
-                      {copiedId === msg.id ? '✓' : '📋'}
+                      {copiedId === msg.id ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                   </div>
                 )}
@@ -244,12 +245,12 @@ export default function ChatInterface() {
                     )}
                     {msg.cached && (
                       <span className="text-xs px-2 py-0.5 rounded-full bg-yellow-50 text-yellow-700 font-medium">
-                        ⚡ cached
+                        cached
                       </span>
                     )}
                     {msg.retrieved_docs ? (
                       <span className="text-xs text-gray-400">
-                        📚 {msg.retrieved_docs} docs
+                        {msg.retrieved_docs} sources
                       </span>
                     ) : null}
                     {msg.sources?.map((src) => (
@@ -263,14 +264,14 @@ export default function ChatInterface() {
                       className="ml-auto text-xs text-gray-400 hover:text-green-600 transition-colors flex-shrink-0"
                       title="Copy Answer"
                     >
-                      {copiedId === msg.id ? '✓' : '📋'}
+                      {copiedId === msg.id ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
                     </button>
                     <button
                       onClick={() => playAudio(msg.content)}
                       className="text-xs text-gray-400 hover:text-green-600 transition-colors"
                       title="Listen"
                     >
-                      🔊
+                      <Volume2 className="w-4 h-4" />
                     </button>
                   </div>
                 )}
@@ -284,7 +285,9 @@ export default function ChatInterface() {
 
           {loading && (
             <div className="flex items-center gap-2 animate-fade-in">
-              <div className="w-8 h-8 rounded-full bg-green-700 flex items-center justify-center text-white text-sm">🌾</div>
+              <div className="w-8 h-8 rounded-full bg-emerald-700 flex items-center justify-center text-white shadow-sm">
+                <Sprout className="w-4 h-4 text-emerald-100 animate-pulse" />
+              </div>
               <div className="bg-gray-50 border border-gray-100 rounded-2xl rounded-tl-none px-4 py-3">
                 <div className="flex items-center gap-3">
                   <div className="flex gap-1">
@@ -323,14 +326,15 @@ export default function ChatInterface() {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && sendMessage()}
               placeholder="Ask about crops, pests, weather, prices…"
-              className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent bg-white/50"
               disabled={loading}
             />
             <button
               onClick={() => sendMessage()}
               disabled={loading || !input.trim()}
-              className="bg-green-700 text-white px-5 py-2.5 rounded-xl text-sm font-medium hover:bg-green-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
+              className="bg-emerald-700 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-emerald-800 disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 flex items-center gap-1.5 shadow-[0_4px_10px_rgba(16,185,129,0.15)]"
             >
+              <Send className="w-4 h-4" />
               Send
             </button>
           </div>
@@ -340,7 +344,8 @@ export default function ChatInterface() {
       <div className="w-72 hidden lg:flex flex-col gap-3 overflow-y-auto max-h-full pr-1">
         <div className="card-premium rounded-2xl p-5">
           <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
-            <span>📍</span> Farming Context
+            <Sliders className="w-4 h-4 text-emerald-600" />
+            Farming Context
           </h3>
           <div className="space-y-3">
             <div>
@@ -495,7 +500,8 @@ export default function ChatInterface() {
         {/* Quick Queries */}
         <div className="card-premium rounded-2xl p-5">
           <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
-            <span>⚡</span> Quick Queries
+            <Zap className="w-4 h-4 text-amber-500" />
+            Quick Queries
           </h3>
           <div className="space-y-2">
             {EXAMPLE_QUERIES.slice(3).map((q) => (

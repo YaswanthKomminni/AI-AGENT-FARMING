@@ -4,6 +4,7 @@ import WeatherWidget from '@/components/WeatherWidget'
 import MarketPrices from '@/components/MarketPrices'
 import FarmingCards from '@/components/FarmingCards'
 import { useState } from 'react'
+import { Sprout, MessageSquare, CloudSun, TrendingUp, Landmark } from 'lucide-react'
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState<'chat' | 'weather' | 'market' | 'schemes'>('chat')
@@ -14,7 +15,7 @@ export default function Home() {
       <header className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-700 text-white shadow-md border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl filter drop-shadow-md">🌾</span>
+            <Sprout className="w-8 h-8 text-emerald-300 animate-pulse-soft" />
             <div>
               <h1 className="text-xl font-extrabold tracking-tight">FarmWise AI</h1>
               <p className="text-emerald-200 text-[10px] font-medium uppercase tracking-wider">IBM Granite + RAG Agricultural Hub</p>
@@ -31,23 +32,27 @@ export default function Home() {
       <nav className="bg-white/80 backdrop-blur-md border-b border-emerald-100/50 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 flex gap-2 py-3 overflow-x-auto">
           {[
-            { id: 'chat',    label: '💬 Ask Advisor',    desc: 'AI Chat' },
-            { id: 'weather', label: '🌦 Weather',         desc: 'Forecast' },
-            { id: 'market',  label: '💰 Mandi Prices',    desc: 'Markets' },
-            { id: 'schemes', label: '📢 Govt Schemes',    desc: 'Subsidies' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
-                activeTab === tab.id
-                  ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] scale-[1.02]'
-                  : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-700'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+            { id: 'chat',    label: 'Ask Advisor',    icon: MessageSquare },
+            { id: 'weather', label: 'Weather',         icon: CloudSun },
+            { id: 'market',  label: 'Mandi Prices',    icon: TrendingUp },
+            { id: 'schemes', label: 'Govt Schemes',    icon: Landmark },
+          ].map((tab) => {
+            const Icon = tab.icon
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as typeof activeTab)}
+                className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center gap-2 whitespace-nowrap ${
+                  activeTab === tab.id
+                    ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] scale-[1.02]'
+                    : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-700'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                {tab.label}
+              </button>
+            )
+          })}
         </div>
       </nav>
 
