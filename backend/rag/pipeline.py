@@ -23,6 +23,25 @@ def _cache_key(query: str, language: str, category: Optional[str]) -> str:
     return hashlib.md5(raw.encode()).hexdigest()
 
 
+def clean_llm_response(text: str) -> str:
+    """Truncate the response if it starts leaking training data/tokens."""
+    # List of special separators that indicate leakage/additional code blocks
+    leakage_separators = [
+        "<|file_sep|>",
+        "<|repo_name|>",
+        "<|user|>",
+        "<|system|>",
+        "<|assistant|>",
+        "<|end|>",
+        "import {",
+        "import React",
+    ]
+    for sep in leakage_separators:
+        if sep in text:
+            text = text.split(sep)[0]
+    return text.strip()
+
+
 # ── System prompt ──────────────────────────────────────────────────────────────
 SYSTEM_PROMPT = (
     "You are FarmWise AI, a strictly focused agricultural AI assistant for Indian farmers. "
@@ -137,6 +156,8 @@ def run_rag_pipeline(
         # Fall back to mock response so the app stays usable
         from agents.granite import _MockGraniteLLM
         response_text = _MockGraniteLLM().invoke(query)
+
+    response_text = clean_llm_response(response_text)
 
     # Step 5: Extract sources
     sources = []
