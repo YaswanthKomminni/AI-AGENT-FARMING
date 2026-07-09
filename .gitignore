@@ -46,3 +46,8 @@ test_intent.py
 backend/extracted_images/
 backend/scripts/extract_pdf.py
 backend/scripts/generate_pptx.py
+
+# PowerPoint files
+project_presentation.pptx
+~$project_presentation.pptx
+
