@@ -9,27 +9,27 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<'chat' | 'weather' | 'market' | 'schemes'>('chat')
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-green-700 text-white shadow-lg">
+      <header className="bg-gradient-to-r from-emerald-800 via-emerald-700 to-green-700 text-white shadow-md border-b border-emerald-900/10">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="text-3xl">🌾</span>
+            <span className="text-3xl filter drop-shadow-md">🌾</span>
             <div>
-              <h1 className="text-xl font-bold tracking-tight">FarmWise AI</h1>
-              <p className="text-green-200 text-xs">Powered by IBM Granite + RAG</p>
+              <h1 className="text-xl font-extrabold tracking-tight">FarmWise AI</h1>
+              <p className="text-emerald-200 text-[10px] font-medium uppercase tracking-wider">IBM Granite + RAG Agricultural Hub</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-xs text-green-200">
-            <span className="w-2 h-2 rounded-full bg-green-300 inline-block animate-pulse" />
-            AI Agent Active
+          <div className="flex items-center gap-2 text-xs bg-emerald-900/40 px-3 py-1.5 rounded-full border border-emerald-500/20">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
+            <span className="font-semibold text-emerald-100">Advisor Connected</span>
           </div>
         </div>
       </header>
 
       {/* Tab Navigation */}
-      <nav className="bg-white border-b border-green-100 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 flex gap-1 py-2 overflow-x-auto">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-emerald-100/50 sticky top-0 z-50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 flex gap-2 py-3 overflow-x-auto">
           {[
             { id: 'chat',    label: '💬 Ask Advisor',    desc: 'AI Chat' },
             { id: 'weather', label: '🌦 Weather',         desc: 'Forecast' },
@@ -39,10 +39,10 @@ export default function Home() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as typeof activeTab)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${
+              className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 whitespace-nowrap ${
                 activeTab === tab.id
-                  ? 'bg-green-700 text-white shadow'
-                  : 'text-gray-600 hover:bg-green-50 hover:text-green-700'
+                  ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-[0_4px_12px_rgba(16,185,129,0.2)] scale-[1.02]'
+                  : 'text-gray-600 hover:bg-emerald-50 hover:text-emerald-700'
               }`}
             >
               {tab.label}

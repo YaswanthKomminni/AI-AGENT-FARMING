@@ -48,17 +48,17 @@ export default function FarmingCards() {
   return (
     <div className="space-y-4">
       {/* Category filter */}
-      <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
-        <h2 className="text-sm font-semibold text-gray-700 mb-3">📢 Government Schemes & Subsidies</h2>
+      <div className="card-premium rounded-2xl p-5">
+        <h2 className="text-sm font-bold text-gray-800 mb-3">📢 Government Schemes & Subsidies</h2>
         <div className="flex flex-wrap gap-2">
           {CATEGORY_FILTERS.map((f) => (
             <button
               key={f.key}
               onClick={() => setCategory(f.key)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
                 category === f.key
-                  ? 'bg-purple-700 text-white shadow'
-                  : 'bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100'
+                  ? 'bg-purple-700 text-white shadow-[0_4px_10px_rgba(109,40,217,0.2)] scale-[1.02]'
+                  : 'bg-purple-50 text-purple-700 border border-purple-200 hover:bg-purple-100 hover:text-purple-800'
               }`}
             >
               {f.emoji} {f.label}
@@ -68,9 +68,9 @@ export default function FarmingCards() {
       </div>
 
       {loading && (
-        <div className="bg-white rounded-2xl border p-8 text-center">
+        <div className="card-premium rounded-2xl p-12 text-center">
           <div className="text-3xl mb-2 animate-pulse">📋</div>
-          <p className="text-gray-500 text-sm">Loading schemes…</p>
+          <p className="text-gray-500 text-sm font-medium">Loading schemes…</p>
         </div>
       )}
 
@@ -79,7 +79,7 @@ export default function FarmingCards() {
           {schemes.map((scheme, i) => (
             <div
               key={scheme.id}
-              className={`bg-white rounded-2xl border border-gray-100 shadow-sm border-l-4 ${SCHEME_COLORS[i % SCHEME_COLORS.length]} overflow-hidden`}
+              className={`card-premium rounded-2xl border-l-4 ${SCHEME_COLORS[i % SCHEME_COLORS.length]} overflow-hidden`}
             >
               <div
                 className="p-4 cursor-pointer hover:bg-gray-50 transition-colors"

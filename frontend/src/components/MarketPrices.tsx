@@ -42,8 +42,8 @@ export default function MarketPrices() {
   return (
     <div className="space-y-4">
       {/* Commodity selector */}
-      <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
-        <h2 className="text-sm font-semibold text-gray-700 mb-3">
+      <div className="card-premium rounded-2xl p-5">
+        <h2 className="text-sm font-bold text-gray-800 mb-3">
           💰 Live Mandi Prices (₹/quintal)
         </h2>
         <div className="flex flex-wrap gap-2">
@@ -51,10 +51,10 @@ export default function MarketPrices() {
             <button
               key={c}
               onClick={() => setCommodity(c)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
                 commodity === c
-                  ? 'bg-orange-600 text-white shadow'
-                  : 'bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100'
+                  ? 'bg-orange-600 text-white shadow-[0_4px_10px_rgba(234,88,12,0.2)] scale-[1.02]'
+                  : 'bg-orange-50 text-orange-700 border border-orange-200 hover:bg-orange-100 hover:text-orange-800'
               }`}
             >
               {COMMODITY_EMOJI[c] || '🌱'} {c.charAt(0).toUpperCase() + c.slice(1)}
@@ -64,9 +64,9 @@ export default function MarketPrices() {
       </div>
 
       {loading && (
-        <div className="bg-white rounded-2xl border border-orange-100 p-8 text-center">
+        <div className="card-premium rounded-2xl p-12 text-center">
           <div className="text-3xl mb-2 animate-pulse">💰</div>
-          <p className="text-gray-500 text-sm">Fetching prices…</p>
+          <p className="text-gray-500 text-sm font-medium">Fetching prices…</p>
         </div>
       )}
 
@@ -104,9 +104,9 @@ export default function MarketPrices() {
           </div>
 
           {/* Price table */}
-          <div className="bg-white rounded-2xl border border-green-100 shadow-sm overflow-hidden">
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-100">
-              <p className="text-sm font-semibold text-gray-700">
+          <div className="card-premium rounded-2xl overflow-hidden">
+            <div className="px-4 py-3 bg-gray-50/50 border-b border-gray-100">
+              <p className="text-sm font-bold text-gray-800">
                 {COMMODITY_EMOJI[commodity] || '🌱'} {commodity.charAt(0).toUpperCase() + commodity.slice(1)} — All Markets
               </p>
             </div>

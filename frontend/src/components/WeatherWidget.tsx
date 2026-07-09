@@ -46,15 +46,15 @@ export default function WeatherWidget() {
   return (
     <div className="space-y-4">
       {/* City selector */}
-      <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
+      <div className="card-premium rounded-2xl p-5">
         <div className="flex flex-wrap gap-2">
           {CITIES.map((city) => (
             <button
               key={city}
               onClick={() => setSelectedCity(city)}
-              className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+              className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
                 selectedCity === city
-                  ? 'bg-green-700 text-white shadow'
+                  ? 'bg-gradient-to-r from-emerald-600 to-green-600 text-white shadow-[0_4px_10px_rgba(16,185,129,0.2)] scale-[1.02]'
                   : 'bg-gray-100 text-gray-600 hover:bg-green-50 hover:text-green-700'
               }`}
             >
@@ -65,9 +65,9 @@ export default function WeatherWidget() {
       </div>
 
       {loading && (
-        <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-8 text-center">
+        <div className="card-premium rounded-2xl p-12 text-center">
           <div className="text-3xl mb-2 animate-bounce">🌤️</div>
-          <p className="text-gray-500 text-sm">Loading weather data…</p>
+          <p className="text-gray-500 text-sm font-medium">Loading weather data…</p>
         </div>
       )}
 
@@ -128,8 +128,8 @@ export default function WeatherWidget() {
           )}
 
           {/* 7-day forecast */}
-          <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
-            <h3 className="font-semibold text-gray-800 text-sm mb-3">📅 7-Day Forecast</h3>
+          <div className="card-premium rounded-2xl p-5">
+            <h3 className="font-bold text-gray-800 text-sm mb-3">📅 7-Day Forecast</h3>
             <div className="grid grid-cols-7 gap-2">
               {weather.forecast_7day.map((day, i) => (
                 <div key={day.date} className="text-center">

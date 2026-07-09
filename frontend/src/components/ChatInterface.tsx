@@ -154,14 +154,14 @@ export default function ChatInterface() {
   return (
     <div className="flex gap-4 h-[calc(100vh-180px)]">
       {/* Chat Panel */}
-      <div className="flex-1 flex flex-col bg-white rounded-2xl shadow-sm border border-green-100 overflow-hidden">
+      <div className="flex-1 flex flex-col bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-emerald-100/60 overflow-hidden">
         {/* Chat Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-green-700 text-white">
+        <div className="flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-emerald-800 to-emerald-700 text-white border-b border-emerald-900/10">
           <div className="flex items-center gap-2">
-            <span className="text-lg">🤖</span>
+            <span className="text-lg filter drop-shadow-sm">🤖</span>
             <div>
-              <p className="font-semibold text-sm">FarmWise AI Advisor</p>
-              <p className="text-xs text-green-200">IBM Granite + RAG • {language}</p>
+              <p className="font-bold text-sm tracking-wide">FarmWise AI Advisor</p>
+              <p className="text-[10px] text-emerald-200 font-medium">IBM Granite + RAG • {language}</p>
             </div>
           </div>
           <div className="flex items-center gap-2">
@@ -311,35 +311,35 @@ export default function ChatInterface() {
 
       {/* Context Panel */}
       <div className="w-72 hidden lg:flex flex-col gap-3">
-        <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
-          <h3 className="font-semibold text-gray-800 text-sm mb-3 flex items-center gap-2">
+        <div className="card-premium rounded-2xl p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
             <span>📍</span> Farming Context
           </h3>
           <div className="space-y-3">
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Location / District</label>
+              <label className="text-xs text-gray-500 font-medium block mb-1">Location / District</label>
               <input
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="e.g., Pune, Maharashtra"
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Crop</label>
+              <label className="text-xs text-gray-500 font-medium block mb-1">Crop</label>
               <input
                 value={crop}
                 onChange={(e) => setCrop(e.target.value)}
                 placeholder="e.g., Rice, Wheat, Cotton"
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
               />
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Season</label>
+              <label className="text-xs text-gray-500 font-medium block mb-1">Season</label>
               <select
                 value={season}
                 onChange={(e) => setSeason(e.target.value)}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
               >
                 <option value="">Select season</option>
                 <option value="kharif">Kharif (June–Oct)</option>
@@ -348,11 +348,11 @@ export default function ChatInterface() {
               </select>
             </div>
             <div>
-              <label className="text-xs text-gray-500 block mb-1">Soil Type</label>
+              <label className="text-xs text-gray-500 font-medium block mb-1">Soil Type</label>
               <select
                 value={soilType}
                 onChange={(e) => setSoilType(e.target.value)}
-                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500"
+                className="w-full border border-gray-200 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-green-500 bg-white/50"
               >
                 <option value="">Select soil type</option>
                 <option value="alluvial">Alluvial</option>
@@ -363,14 +363,14 @@ export default function ChatInterface() {
               </select>
             </div>
           </div>
-          <p className="text-xs text-gray-400 mt-3">
+          <p className="text-[10px] text-gray-400 mt-4 leading-normal">
             Providing context improves AI recommendation accuracy.
           </p>
         </div>
 
         {/* Quick Queries */}
-        <div className="bg-white rounded-2xl border border-green-100 shadow-sm p-4">
-          <h3 className="font-semibold text-gray-800 text-sm mb-3 flex items-center gap-2">
+        <div className="card-premium rounded-2xl p-5">
+          <h3 className="font-bold text-gray-800 text-sm mb-3 flex items-center gap-2">
             <span>⚡</span> Quick Queries
           </h3>
           <div className="space-y-2">
@@ -378,7 +378,7 @@ export default function ChatInterface() {
               <button
                 key={q}
                 onClick={() => sendMessage(q)}
-                className="w-full text-left text-xs text-gray-600 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100 hover:bg-green-50 hover:border-green-200 hover:text-green-700 transition-colors"
+                className="w-full text-left text-xs text-gray-600 bg-gray-50/50 px-3 py-2.5 rounded-lg border border-gray-100/50 hover:bg-emerald-50 hover:border-emerald-200 hover:text-emerald-700 transition-colors"
               >
                 {q}
               </button>
