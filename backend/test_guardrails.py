@@ -16,6 +16,10 @@ tests = [
     ("Hello!", True),
     ("Who are you?", True),
     ("What can you do?", True),
+    ("How are you today?", True),
+    ("Thank you very much!", True),
+    ("Goodbye, take care!", True),
+    ("Nice to meet you", True),
     
     # Off-topic questions (should be blocked)
     ("Who is the president of USA?", False),

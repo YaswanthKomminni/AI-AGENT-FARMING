@@ -52,7 +52,11 @@ def is_query_on_topic(query: str) -> bool:
         "hi", "hello", "hey", "hola", "namaste", "pranam", "pranama", "greetings", "morning", "evening", "afternoon",
         "who", "what", "how", "you", "assistant", "farmwise", "help", "capabilities", "purpose", "info",
         "are", "is", "your", "can", "do", "name", "about", "describe", "yourself", "introduce", "me", "to", "the", 
-        "bot", "ai", "smart", "tell", "show", "details", "work", "greeting", "exist", "created"
+        "bot", "ai", "smart", "tell", "show", "details", "work", "greeting", "exist", "created",
+        "thank", "thanks", "great", "nice", "good", "bye", "goodbye", "care", "welcome", "awesome", "cool",
+        "that", "this", "it", "well", "fine", "so", "very", "much", "day", "meet", "doing", "going", "up",
+        "am", "i", "a", "an", "ok", "okay", "glad", "happy", "talk", "chat", "speak", "please", "with",
+        "take", "later", "soon", "again"
     }
     # If it's a short message containing only meta keywords, it's allowed
     if len(words) <= 5 and all(w in meta_keywords for w in words):
