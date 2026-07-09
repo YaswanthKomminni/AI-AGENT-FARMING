@@ -33,7 +33,12 @@ def translate_text(text: str, target_language: str = "English", source_language:
     target_code = LANGUAGE_CODES.get(target_language, "en")
 
     if target_code == "en" and source_language == "auto":
-        return text  # Already English
+        # Check if text contains non-Latin (e.g. Indian script) characters.
+        # Range > 0x024F covers Devanagari, Tamil, Telugu, etc.
+        # If it has only Latin/ASCII characters, we assume it's already English/romanized and skip translation.
+        has_non_latin = any(ord(c) > 0x024F for c in text)
+        if not has_non_latin:
+            return text
 
     try:
         translator = GoogleTranslator(source=source_language, target=target_code)

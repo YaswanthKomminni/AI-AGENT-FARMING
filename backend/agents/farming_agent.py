@@ -27,6 +27,98 @@ INTENT_MAP = {
 }
 
 
+from translation.translator import translate_text
+
+def is_query_on_topic(query: str) -> bool:
+    """Check if the query is related to farming, weather/temperature, market prices, or schemes."""
+    import re
+    # Normalize query: lowercase and remove punctuation
+    query_clean = re.sub(r'[^\w\s-]', ' ', query.lower())
+    words = query_clean.split()
+
+    if not words:
+        return False
+
+    # 1. Blacklist check (programming, entertainment, off-topic fields)
+    blacklist_keywords = {
+        "python", "javascript", "java", "script", "code", "programming", "develop", "software", "html", "css", "database", "sql", 
+        "movie", "song", "poem", "joke", "cricket", "football", "soccer", "actor", "actress", "director", "sing", "dance", "politics", "election"
+    }
+    if any(w in blacklist_keywords for w in words):
+        return False
+
+    # 2. Allow greetings and bot-specific meta questions
+    meta_keywords = {
+        "hi", "hello", "hey", "hola", "namaste", "pranam", "pranama", "greetings", "morning", "evening", "afternoon",
+        "who", "what", "how", "you", "assistant", "farmwise", "help", "capabilities", "purpose", "info",
+        "are", "is", "your", "can", "do", "name", "about", "describe", "yourself", "introduce", "me", "to", "the", 
+        "bot", "ai", "smart", "tell", "show", "details", "work", "greeting", "exist", "created"
+    }
+    # If it's a short message containing only meta keywords, it's allowed
+    if len(words) <= 5 and all(w in meta_keywords for w in words):
+        return True
+
+    # 3. Comprehensive farming-specific and generic topic stems
+    farming_specific_stems = [
+        # General Agriculture, Farming, Crops, Soil, Fertilizer
+        "farm", "agricultur", "cultivat", "agronomy", "horticultur", "floricultur", "field", "land", "soil", "clay", "sand", "silt", "loam", "peat", "chalky", "humus", "fertility", "yield", "crop", "plant", "seed", "sow", "sowing", "harvest", "plow", "plough", "till", "tillage", "tractor", "harvester", "combine", "rotavator", "machinery", "equipment", "greenhouse", "polyhouse", "hydroponic", "aeroponic", "aquaponic", "mulch", "compost", "manure", "organic", "vermicompost", "biofertilizer", "fertilizer", "urea", "npk", "dap", "potash", "phosphate", "nitrogen", "phosphorus", "potassium", "nutrient", "soil health", "soil test", "manure", "cow dung", "zinc", "sulfur", "boron", "iron",
+        # Crops & Plants
+        "wheat", "rice", "paddy", "cotton", "maize", "corn", "soy", "soybean", "mustard", "tomato", "onion", "potato", "sugarcane", "pulse", "lentil", "gram", "pea", "bean", "millet", "sorghum", "ragi", "bajra", "jute", "rubber", "tea", "coffee", "cardamom", "turmeric", "garlic", "ginger", "chili", "chilli", "pepper", "coconut", "arecanut", "cashew", "mango", "banana", "grape", "citrus", "apple", "guava", "papaya", "pomegranate", "groundnut", "sunflower", "sesame", "castor", "linseed", "safflower", "barley", "oat", "rye", "tobacco", "spice", "coriander", "cumin", "fennel", "fenugreek", "vegetable", "fruit", "flower", "rose", "marigold", "jasmine", "hybrid", "graft", "nursery",
+        # Pests, Diseases, Protection
+        "pest", "disease", "insect", "bug", "worm", "caterpillar", "aphid", "thrip", "whitefly", "mite", "locust", "borer", "weevil", "fungus", "fungal", "bacteria", "viral", "virus", "nematode", "blight", "wilt", "rot", "mildew", "rust", "spot", "yellowing", "canker", "dieback", "damping off", "weed", "herbicide", "weedicide", "pesticide", "insecticide", "fungicide", "biopesticide", "neem oil", "spray", "dosage", "infestation", "outbreak",
+        # Irrigation / Weather specific (always on-topic)
+        "irrigation", "drip", "sprinkler", "canal", "well", "borewell", "pump", "watering", "moisture", "drought", "flood", "monsoon", "evaporation", "transpiration", "aquifer", "rainwater", "water harvesting",
+        "weather", "forecast", "climate", "humidity", "storm", "frost", "hail", "precipitation", "rain", "today", "tomorrow",
+        # Mandi/Market specific
+        "mandi", "msp", "apmc", "e-nam",
+        # Schemes specific
+        "pm-kisan", "pmfby", "kcc", "yojana", "yojan", "pm-kmy", "pmsym", "krishi", "kisan", "fpo", "nabard", "cooperative",
+        # Livestock & Allied
+        "cow", "cattle", "buffalo", "goat", "sheep", "poultry", "chicken", "hen", "egg", "dairy", "milk", "livestock", "fodder", "feed", "silage", "veterinary", "animal", "bee", "beekeeping", "apiculture", "fish", "fishery", "aquaculture", "sericulture", "silk", "mushroom",
+        # Romanized regional terms (Hinglish/regional keywords)
+        "kheti", "fasal", "khet", "mitti", "beej", "buwai", "katai", "aloo", "tamatar", "pyaz", "dhan", "chawal", "gehun", "kapas", "ganna", "sarso",
+        "paani", "jal", "barish", "barsat", "mausam", "tapman", "sardi", "garmi",
+        "bhav", "mandi", "bazaar", "bazar", "karza", "karj", "bima", "beema", "sarkari",
+        "khad", "gobar", "keeda", "bimari", "rog", "dawa", "dawae", "keetnashak"
+    ]
+
+    generic_stems = [
+        "price", "cost", "rate", "sell", "sale", "buy", "wholesale", "retail", "rupee", "inr", "rs", "profit", "loss", "revenue", "income", "trading", "commodity", "value", "paisa", "rupeya", "dam", "daam", "kimat", "keemat",
+        "scheme", "subsidy", "subsidies", "insurance", "loan", "credit", "government", "credit card", "bank", "eligible", "eligibility", "benefit", "grant", "support", "financial aid",
+        "water", "temperature", "temp", "degree", "celsius", "fahrenheit", "heat", "cold", "wind", "cloud", "sun"
+    ]
+
+    has_farming_specific = False
+
+    for word in words:
+        # Check farming specific stems
+        for stem in farming_specific_stems:
+            if len(stem) <= 3:
+                if word == stem:
+                    has_farming_specific = True
+                    break
+            else:
+                if word.startswith(stem):
+                    has_farming_specific = True
+                    break
+        
+        if has_farming_specific:
+            return True
+
+        # Check generic stems
+        for stem in generic_stems:
+            if len(stem) <= 3:
+                if word == stem:
+                    # just verify if we match any generic word
+                    break
+            else:
+                if word.startswith(stem):
+                    # just verify if we match any generic word
+                    break
+
+    return False
+
+
 def detect_intent(query: str) -> str:
     """Detect primary intent from query keywords."""
     query_lower = query.lower()
@@ -51,6 +143,32 @@ async def process_farming_query(
     Main entry point for the farming agent.
     Routes queries to the appropriate module then enhances with RAG + Granite.
     """
+    # Translate query to English for topic validation if it's not English
+    query_en = query
+    try:
+        query_en = translate_text(query, target_language="English", source_language="auto")
+    except Exception as e:
+        logger.warning(f"Could not translate query for topic validation: {e}")
+
+    # Check if query is on topic
+    if not is_query_on_topic(query_en):
+        polite_msg = "I can only help with questions related to farming, weather/temperature, market prices, and government schemes. Please ask a question related to these topics."
+        if language != "English":
+            try:
+                polite_msg = translate_text(polite_msg, target_language=language)
+            except Exception as e:
+                logger.warning(f"Failed to translate polite message: {e}")
+
+        return {
+            "answer": polite_msg,
+            "sources": [],
+            "retrieved_docs": 0,
+            "language": language,
+            "intent": "out_of_scope",
+            "cached": False,
+            "live_data": None
+        }
+
     intent = detect_intent(query)
     logger.info(f"Query intent: {intent} | query='{query[:60]}'")
 
