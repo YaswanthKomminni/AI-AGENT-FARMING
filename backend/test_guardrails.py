@@ -1,5 +1,7 @@
 import sys, os
 import asyncio
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8")
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from agents.farming_agent import process_farming_query
@@ -20,6 +22,10 @@ tests = [
     ("Thank you very much!", True),
     ("Goodbye, take care!", True),
     ("Nice to meet you", True),
+    ("नमस्ते", True),
+    ("vanakkam sir", True),
+    ("namasthe", True),
+    ("ram ram", True),
     
     # Off-topic questions (should be blocked)
     ("Who is the president of USA?", False),

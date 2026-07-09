@@ -39,6 +39,18 @@ def is_query_on_topic(query: str) -> bool:
     if not words:
         return False
 
+    # Pre-whitelist common regional greeting words for quick allow (up to 3 words)
+    greetings_regional = {
+        "namaste", "namaskar", "namaskara", "namaskaram", "vanakkam", "namaskaraa", "namasthe",
+        "pranam", "pranama", "ram ram", "radhe radhe", "jai jinendra", "sat sri akal",
+        "satsriakal", "adaab", "salam", "shalam", "kem cho", "khamma ghani", "ramram",
+        "नमस्ते", "नमस्कार", "नमस्कारम", "வணக்கம்", "నమస్కారం", "నమస్తే", "నమస్కారాలు",
+        "ನಮಸ್ಕಾರ", "ನಮಸ್ಕಾರಗಳು", "നമസ്കാരം", "ਰਾਮ ਰਾਮ", "सत श्री अकाल", "राम राम", "प्रणाम", "سلام"
+    }
+    query_phrase = " ".join(words)
+    if len(words) <= 3 and (query_phrase in greetings_regional or any(w in greetings_regional for w in words)):
+        return True
+
     # 1. Blacklist check (programming, entertainment, off-topic fields)
     blacklist_keywords = {
         "python", "javascript", "java", "script", "code", "programming", "develop", "software", "html", "css", "database", "sql", 
