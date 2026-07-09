@@ -52,7 +52,7 @@ async def run_tests():
     for query, expected_allowed in tests:
         res = await process_farming_query(query)
         ans = res["answer"]
-        is_blocked = "I can only help with questions related to farming" in ans
+        is_blocked = res.get("intent") == "out_of_scope"
         allowed = not is_blocked
         
         status = "OK  " if allowed == expected_allowed else "FAIL"

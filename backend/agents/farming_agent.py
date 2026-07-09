@@ -91,6 +91,8 @@ def is_query_on_topic(query: str) -> bool:
         "pm-kisan", "pmfby", "kcc", "yojana", "yojan", "pm-kmy", "pmsym", "krishi", "kisan", "fpo", "nabard", "cooperative",
         # Livestock & Allied
         "cow", "cattle", "buffalo", "goat", "sheep", "poultry", "chicken", "hen", "egg", "dairy", "milk", "livestock", "fodder", "feed", "silage", "veterinary", "animal", "bee", "beekeeping", "apiculture", "fish", "fishery", "aquaculture", "sericulture", "silk", "mushroom",
+        # Core Schemes, Weather & Water terms (always on-topic directly)
+        "scheme", "subsidy", "subsidies", "insurance", "loan", "credit", "eligible", "eligibility", "benefit", "grant", "financial aid",
         # Romanized regional terms (Hinglish/regional keywords)
         "kheti", "fasal", "khet", "mitti", "beej", "buwai", "katai", "aloo", "tamatar", "pyaz", "dhan", "chawal", "gehun", "kapas", "ganna", "sarso",
         "paani", "jal", "barish", "barsat", "mausam", "tapman", "sardi", "garmi",
@@ -99,9 +101,8 @@ def is_query_on_topic(query: str) -> bool:
     ]
 
     generic_stems = [
-        "price", "cost", "rate", "sell", "sale", "buy", "wholesale", "retail", "rupee", "inr", "rs", "profit", "loss", "revenue", "income", "trading", "commodity", "value", "paisa", "rupeya", "dam", "daam", "kimat", "keemat",
-        "scheme", "subsidy", "subsidies", "insurance", "loan", "credit", "government", "credit card", "bank", "eligible", "eligibility", "benefit", "grant", "support", "financial aid",
-        "water", "temperature", "temp", "degree", "celsius", "fahrenheit", "heat", "cold", "wind", "cloud", "sun"
+        "price", "cost", "rate", "sell", "sale", "buy", "wholesale", "retail", "rupee", "inr", "rs", "profit", "loss", "revenue", "income", "trading", "commodity", "value", "paisa", "rupeya", "dam", "daam", "kimat", "keemat", "credit card", "bank", "support",
+        "government", "water", "temperature", "temp", "sun", "degree", "celsius", "fahrenheit", "heat", "cold", "wind", "cloud"
     ]
 
     has_farming_specific = False
@@ -173,25 +174,8 @@ async def process_farming_query(
         logger.warning(f"Could not translate query for topic validation: {e}")
 
     # Check if query is on topic
-    if not is_query_on_topic(query_en):
-        polite_msg = "I can only help with questions related to farming, weather/temperature, market prices, and government schemes. Please ask a question related to these topics."
-        if language != "English":
-            try:
-                polite_msg = translate_text(polite_msg, target_language=language)
-            except Exception as e:
-                logger.warning(f"Failed to translate polite message: {e}")
-
-        return {
-            "answer": polite_msg,
-            "sources": [],
-            "retrieved_docs": 0,
-            "language": language,
-            "intent": "out_of_scope",
-            "cached": False,
-            "live_data": None
-        }
-
-    intent = detect_intent(query)
+    is_on_topic = is_query_on_topic(query_en)
+    intent = "out_of_scope" if not is_on_topic else detect_intent(query)
     logger.info(f"Query intent: {intent} | query='{query[:60]}'")
 
     # Enrich query with context
@@ -238,7 +222,8 @@ async def process_farming_query(
     rag_result = run_rag_pipeline(
         query=enriched_query,
         language=language,
-        category_filter=intent if intent != "general" else None,
+        category_filter=intent if intent not in ["general", "out_of_scope"] else None,
+        is_on_topic=is_on_topic,
     )
 
     # Merge live data into response

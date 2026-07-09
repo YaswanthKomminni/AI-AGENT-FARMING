@@ -114,6 +114,12 @@ class _MockGraniteLLM:
                 "- **SMAM:** Subsidies on agricultural machinery\n\n"
                 "_Contact your local Krishi Vigyan Kendra (KVK) for eligibility and application._"
             )
+        elif "off-topic" in query_lower:
+            return (
+                "Here is a simple response to your query. "
+                "I can help answer general questions briefly, but my primary focus is Indian agriculture.\n\n"
+                "Please ask questions related to farming, weather, market prices, or government schemes."
+            )
         else:
             return (
                 "**FarmWise AI (Demo Mode)**\n\n"

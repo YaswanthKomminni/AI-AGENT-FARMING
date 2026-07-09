@@ -26,16 +26,23 @@ def _cache_key(query: str, language: str, category: Optional[str]) -> str:
 # ── System prompt ──────────────────────────────────────────────────────────────
 SYSTEM_PROMPT = (
     "You are FarmWise AI, a strictly focused agricultural AI assistant for Indian farmers. "
-    "You are ONLY allowed to answer questions directly related to farming (crops, pests, soil, irrigation, fertilizer, livestock), weather/temperature, mandi/market prices, and government schemes/subsidies. "
-    "CONVERSATIONAL EXCEPTION: You are allowed to respond politely to greetings (e.g. hi, hello), appreciation (e.g. thank you), and brief friendly conversational small-talk (e.g. how are you?) to build an AI-human connection. "
-    "CRITICAL behavioral rule: For any other off-topic questions (e.g. general knowledge, programming, history, math, etc.), you must NOT answer the question. Under no circumstances should you provide general information, write code, tell jokes, solve math, or answer other general knowledge queries. "
-    "Instead, you must reply EXACTLY with: 'I can only help with questions related to farming, weather/temperature, market prices, and government schemes. Please ask a question related to these topics.' "
-    "Do not provide any other information or explanation for off-topic questions."
+    "Your main focus is answering questions related to farming (crops, pests, soil, irrigation, fertilizer, livestock), weather/temperature, mandi/market prices, and government schemes/subsidies. "
+    "If the user asks an off-topic question that is not related to farming, weather, market prices, or government schemes, "
+    "you should answer the question simply and briefly in a few sentences, and then add a polite suggestion recommending that they ask questions related to farming, weather, market prices, or government schemes."
 )
 
 
-def build_rag_prompt(query: str, context_docs: list[dict], language: str = "English") -> str:
+def build_rag_prompt(query: str, context_docs: list[dict], language: str = "English", is_on_topic: bool = True) -> str:
     """Build formatted string prompt for WatsonxLLM using Granite template."""
+    if not is_on_topic:
+        sys_prompt = (
+            "You are FarmWise AI, a helpful agricultural AI assistant for Indian farmers. "
+            "The user has asked a question that is not directly related to farming, weather, market prices, or government schemes. "
+            "Answer the user's question simply and briefly in a few sentences, and then suggest that they ask questions related to farming, weather, market prices, or government schemes."
+        )
+    else:
+        sys_prompt = SYSTEM_PROMPT
+
     context_parts = []
     for i, doc in enumerate(context_docs, 1):
         source = doc.get("metadata", {}).get("source", "Knowledge Base")
@@ -50,7 +57,7 @@ def build_rag_prompt(query: str, context_docs: list[dict], language: str = "Engl
     )
     
     prompt = (
-        f"<|system|>\n{SYSTEM_PROMPT}<|end|>\n"
+        f"<|system|>\n{sys_prompt}<|end|>\n"
         f"<|user|>\n{user_content}<|end|>\n"
         f"<|assistant|>\n"
     )
@@ -86,6 +93,7 @@ def run_rag_pipeline(
     language: str = "English",
     category_filter: Optional[str] = None,
     n_docs: int = 3,          # reduced from 5 → 3 for speed
+    is_on_topic: bool = True,
 ) -> dict:
     """
     Full RAG pipeline:
@@ -105,18 +113,20 @@ def run_rag_pipeline(
 
     # Step 2: Retrieve (top-3 docs only for speed)
     where_filter = None
-    if category_filter:
+    if category_filter and is_on_topic:
         where_filter = {"category": {"$eq": category_filter}}
 
-    try:
-        docs = similarity_search(query, n_results=n_docs, where=where_filter)
-        logger.info(f"Retrieved {len(docs)} docs for: '{query[:40]}'")
-    except Exception as e:
-        logger.warning(f"Retrieval failed: {e}. Continuing without context.")
-        docs = []
+    docs = []
+    if is_on_topic:
+        try:
+            docs = similarity_search(query, n_results=n_docs, where=where_filter)
+            logger.info(f"Retrieved {len(docs)} docs for: '{query[:40]}'")
+        except Exception as e:
+            logger.warning(f"Retrieval failed: {e}. Continuing without context.")
+            docs = []
 
     # Step 3: Build formatted prompt string
-    prompt = build_rag_prompt(query, docs, language)
+    prompt = build_rag_prompt(query, docs, language, is_on_topic)
 
     # Step 4: Generate with IBM Granite (retry on 429)
     try:
