@@ -73,7 +73,14 @@ export default function ChatInterface() {
   const [season, setSeason] = useState('')
   const [soilType, setSoilType] = useState('')
   const [showContext, setShowContext] = useState(false)
+  const [copiedId, setCopiedId] = useState<string | null>(null)
   const bottomRef = useRef<HTMLDivElement>(null)
+
+  const handleCopy = (text: string, id: string) => {
+    navigator.clipboard.writeText(text)
+    setCopiedId(id)
+    setTimeout(() => setCopiedId(null), 1000)
+  }
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -187,11 +194,20 @@ export default function ChatInterface() {
                     dangerouslySetInnerHTML={{ __html: formatMarkdown(msg.content) }}
                   />
                 ) : (
-                  <p className="text-sm">{msg.content}</p>
+                  <div className="flex justify-between items-start gap-3">
+                    <p className="text-sm">{msg.content}</p>
+                    <button
+                      onClick={() => handleCopy(msg.content, msg.id)}
+                      className="text-xs text-green-300 hover:text-white transition-colors flex-shrink-0 mt-0.5"
+                      title="Copy Question"
+                    >
+                      {copiedId === msg.id ? '✓' : '📋'}
+                    </button>
+                  </div>
                 )}
 
-                {/* Meta info */}
-                {msg.role === 'assistant' && (msg.intent || msg.sources?.length) && (
+                {/* Assistant metadata & action buttons (Copy / Speak) */}
+                {msg.role === 'assistant' && (
                   <div className="mt-2 pt-2 border-t border-gray-100 flex flex-wrap gap-2 items-center">
                     {msg.intent && (
                       <span className={`text-xs px-2 py-0.5 rounded-full font-medium ${INTENT_COLORS[msg.intent] || INTENT_COLORS.general}`}>
@@ -213,9 +229,17 @@ export default function ChatInterface() {
                         {src}
                       </span>
                     ))}
+                    
+                    <button
+                      onClick={() => handleCopy(msg.content, msg.id)}
+                      className="ml-auto text-xs text-gray-400 hover:text-green-600 transition-colors flex-shrink-0"
+                      title="Copy Answer"
+                    >
+                      {copiedId === msg.id ? '✓' : '📋'}
+                    </button>
                     <button
                       onClick={() => playAudio(msg.content)}
-                      className="ml-auto text-xs text-gray-400 hover:text-green-600 transition-colors"
+                      className="text-xs text-gray-400 hover:text-green-600 transition-colors"
                       title="Listen"
                     >
                       🔊
