@@ -10,13 +10,13 @@
 
 body {
   font-family: var(--font-sans);
-  background-color: #f8fafc;
+  background-color: #fafdfb;
   background-image: 
     radial-gradient(at 0% 0%, hsla(142, 60%, 97%, 1) 0px, transparent 50%),
     radial-gradient(at 50% 0%, hsla(148, 50%, 96%, 1) 0px, transparent 50%),
     radial-gradient(at 100% 0%, hsla(152, 50%, 96%, 1) 0px, transparent 50%);
   background-attachment: fixed;
-  color: #1e293b;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -34,16 +34,28 @@ body {
 ::-webkit-scrollbar-thumb { background: #10b981; border-radius: 9999px; }
 ::-webkit-scrollbar-thumb:hover { background: #059669; }
 
-/* Custom smooth transitions & shadow */
+/* Cinematic premium card styling */
 .card-premium {
-  @apply bg-white/80 backdrop-blur-md border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.015)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-0.5;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  @apply bg-white/90 backdrop-blur-md border border-slate-200/50 shadow-[0_8px_30px_rgba(0,0,0,0.015)];
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Slide Up and Fade In Animations */
-@keyframes slideUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
+.card-premium:hover {
+  transform: translateY(-4px) scale(1.005);
+  box-shadow: 0 20px 40px rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.25);
+}
+
+/* Cinematic keyframe animations */
+@keyframes cinematicSlideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @keyframes fadeIn {
@@ -52,9 +64,9 @@ body {
 }
 
 .animate-slide-up {
-  animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: cinematicSlideUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards;
 }

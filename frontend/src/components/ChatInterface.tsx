@@ -64,14 +64,14 @@ export default function ChatInterface() {
       id: '0',
       role: 'assistant',
       content:
-        '🌾 **Namaste! I\'m FarmWise AI**, your smart agricultural advisor.\n\n' +
+        '**Namaste! I\'m FarmWise AI**, your smart agricultural advisor.\n\n' +
         'I can help you with:\n' +
-        '- 🌱 **Crop selection** — best crops for your soil and season\n' +
-        '- 🪲 **Pest & disease** diagnosis and treatment\n' +
-        '- 💧 **Irrigation** scheduling and water management\n' +
-        '- 🌱 **Fertilizer** recommendations\n' +
-        '- 💰 **Mandi prices** and market guidance\n' +
-        '- 📢 **Government schemes** and subsidies\n\n' +
+        '- **Crop selection** — best crops for your soil and season\n' +
+        '- **Pest & disease** diagnosis and treatment\n' +
+        '- **Irrigation** scheduling and water management\n' +
+        '- **Fertilizer** recommendations\n' +
+        '- **Mandi prices** and market guidance\n' +
+        '- **Government schemes** and subsidies\n\n' +
         'Ask me anything about farming — in English or your regional language!',
       timestamp: new Date(),
     },
@@ -181,7 +181,7 @@ export default function ChatInterface() {
   }
 
   return (
-    <div className="flex gap-4 h-[calc(100vh-180px)]">
+    <div className="flex gap-4 h-[calc(100vh-180px)] animate-slide-up">
       {/* Chat Panel */}
       <div className="flex-1 flex flex-col bg-white/95 backdrop-blur-md rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.02)] border border-emerald-100/60 overflow-hidden">
         {/* Chat Header */}

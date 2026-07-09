@@ -58,16 +58,16 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-6">
-        <div className={activeTab === 'chat' ? '' : 'hidden'}>
+        <div className={activeTab === 'chat' ? 'animate-slide-up' : 'hidden'}>
           <ChatInterface />
         </div>
-        <div className={activeTab === 'weather' ? '' : 'hidden'}>
+        <div className={activeTab === 'weather' ? 'animate-slide-up' : 'hidden'}>
           <WeatherWidget />
         </div>
-        <div className={activeTab === 'market' ? '' : 'hidden'}>
+        <div className={activeTab === 'market' ? 'animate-slide-up' : 'hidden'}>
           <MarketPrices />
         </div>
-        <div className={activeTab === 'schemes' ? '' : 'hidden'}>
+        <div className={activeTab === 'schemes' ? 'animate-slide-up' : 'hidden'}>
           <FarmingCards />
         </div>
       </main>
