@@ -27,7 +27,11 @@ def clean_llm_response(text: str) -> str:
     """Truncate the response if it starts leaking training data/tokens."""
     # List of special separators that indicate leakage/additional code blocks
     leakage_separators = [
+        "<|file|>",
         "<|file_sep|>",
+        "<|tool_call|>",
+        "<|thought|>",
+        "<|call|>",
         "<|repo_name|>",
         "<|user|>",
         "<|system|>",
